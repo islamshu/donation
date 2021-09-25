@@ -54,3 +54,4 @@ Route::group(['prefix' => 'dashbaord'], function() {
 
 Route::get('/', 'HomeController@index');
 Route::get('create_user_activiry/{id}','Api\ContestController@create_user_activiry')->name('api.create_user_activiry');  
+Route::post('subscribe_actitvty','Api\ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
