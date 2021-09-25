@@ -34,7 +34,8 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
 
     Route::post('env_key_update','GeneralController@env_key_update' )->name('env_key_update.update');
 
-    
+    Route::get('create_user_activiry/{id}','ContestController@create_user_activiry')->name('api.create_user_activiry');  
+
     
 
     Route::get('/', function () {

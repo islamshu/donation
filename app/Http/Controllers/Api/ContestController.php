@@ -99,7 +99,7 @@ class ContestController extends BaseController
                 $activity->lat = $request->lat;
                 $activity->long = $request->long;
                 $contest->update(['code'=>null]);
-                $url = config('app.url').'/api/create_user_activiry/'.$contest->id;
+                $url = config('app.url').'/create_user_activiry/'.$contest->id;
                 $image = QrCode::format('png')
                 ->size(200)->errorCorrection('H')
                 ->generate($url);
