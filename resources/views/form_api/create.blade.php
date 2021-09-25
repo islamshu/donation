@@ -87,35 +87,38 @@ input[type=submit]:hover {
       <div >
         <input type="text" id="fname" name="constant_id" value="{{ $contest->id }}" hidden placeholder="Your name..">
       </div>
-      <div class="col-75">
-        <input type="text" id="fname" required name="first_name" placeholder="الاسم الأول">
-      </div>
       <div class="col-25">
         <label for="fname"> الاسم الاول</label>
       </div>
+      <div class="col-75">
+        <input type="text" id="fname" required name="first_name" placeholder="الاسم الأول">
+      </div>
+      
      
     </div>
      
     <div class="row">
-      
-      <div class="col-75">
-        <input type="text" id="lname" required name="secand_name" placeholder="الاسم الأخير">
-      </div>
       <div class="col-25">
         <label for="lname"> الاسم الاخير</label>
       </div>
+      <div class="col-75">
+        <input type="text" id="lname" required name="secand_name" placeholder="الاسم الأخير">
+      </div>
+     
     </div>
     <div class="row">
-      
-      <div class="col-75">
-        <input type="number" id="phone" required name="phone" placeholder="رقم الهاتف ">
-      </div>
       <div class="col-25">
         <label for="phone">  رقم الهاتف</label>
       </div>
+      <div class="col-75">
+        <input type="number" id="phone" required name="phone" placeholder="رقم الهاتف ">
+      </div>
+      
     </div>
     <div class="row">
-     
+      <div class="col-25">
+        <label for="country">المدينة</label>
+      </div>
       <div class="col-75">
         <select id="city_id" name="city_id">
             @foreach ($cities as $item)
@@ -125,9 +128,7 @@ input[type=submit]:hover {
 
         </select>
       </div>
-      <div class="col-25">
-        <label for="country">المدينة</label>
-      </div>
+     
     </div>
 
     <div class="row">
