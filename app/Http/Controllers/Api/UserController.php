@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\FamousResourse;
+use App\Http\Resources\NotifcationCollection;
 use App\Http\Resources\UserResource;
 use App\IDFamous;
 use App\Mail\mailerification;
@@ -254,5 +255,11 @@ class UserController extends BaseController
             return $this->sendResponse($userResoures,trans('success.Your request has been successfully sent'));
         }
     
+    }
+    public function get_notofiaction(){
+        $userCollection = new NotifcationCollection(auth('api')->user()->unreadNotifications()->get());
+        return $this->sendResponse($userCollection,trans('success.Your request has been successfully sent'));
+
+        
     }
 }

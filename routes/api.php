@@ -13,24 +13,26 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['middleware' => [ 'changeLanguage'], 'namespace' => 'Api'], function () {
+    
 
 
-Route::post('register-famous', 'Api\UserController@register_famous');
-Route::post('register-user', 'Api\UserController@register_user');
+Route::post('register-famous', 'UserController@register_famous');
+Route::post('register-user', 'UserController@register_user');
 
-Route::post('verfiy_account', 'Api\UserController@verfiy_account');
-Route::post('login', 'Api\UserController@login');
-Route::post('forgit', 'Api\UserController@forgit');
-Route::post('reset', 'Api\UserController@reset');
+Route::post('verfiy_account', 'UserController@verfiy_account');
+Route::post('login', 'UserController@login');
+Route::post('forgit', 'UserController@forgit');
+Route::post('reset', 'UserController@reset');
 
 Route::prefix('famous')->middleware('is_famous')->group(function () {
-Route::resource('contest','Api\ContestController');
-Route::post('create_contest','Api\ContestController@store');
-Route::post('contest_update','Api\ContestController@update');
-Route::post('more_info','Api\UserController@more_info');
-Route::post('verfiy_account_famous','Api\UserController@verfiy_account_famous');
-Route::post('choceWineer_activity','Api\ContestController@choceWineer_activity');
-Route::post('choceWineer_contest','Api\ContestController@choceWineer');
+Route::resource('contest','ContestController');
+Route::post('create_contest','ContestController@store');
+Route::post('contest_update','ContestController@update');
+Route::post('more_info','UserController@more_info');
+Route::post('verfiy_account_famous','UserController@verfiy_account_famous');
+Route::post('choceWineer_activity','ContestController@choceWineer_activity');
+Route::post('choceWineer_contest','ContestController@choceWineer');
 
 
 
@@ -38,25 +40,26 @@ Route::post('choceWineer_contest','Api\ContestController@choceWineer');
 });
 
 Route::prefix('user')->group(function () {
-    // Route::resource('contest','Api\ContestController')->only('index','show');
-    Route::get('get_all_contest','Api\ContestController@get_all_contest');
-    Route::get('get_all_activity','Api\ContestController@get_all_activity');
+    // Route::resource('contest','ContestController')->only('index','show');
+    Route::get('get_all_contest','ContestController@get_all_contest');
+    Route::get('get_all_activity','ContestController@get_all_activity');
 
-    Route::get('show_contect/{id}','Api\ContestController@show');
+    Route::get('show_contect/{id}','ContestController@show');
 
-    Route::post('subsrcibe','Api\ContestController@subscribe');
-    Route::post('edit-profile','Api\UserController@edit_profile');  
-    Route::get('show_profile','Api\UserController@show_profile');  
-    Route::post('change_password','Api\UserController@change_password');  
-    Route::get('create_user_activiry/{id}','Api\ContestController@create_user_activiry')->name('api.create_user_activiry');  
-    Route::post('subscribe_actitvty','Api\ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
-    Route::get('my_contest','Api\ContestController@my_contest')->name('api.my_contest');  
- 
+    Route::post('subsrcibe','ContestController@subscribe');
+    Route::post('edit-profile','UserController@edit_profile');  
+    Route::get('show_profile','UserController@show_profile');  
+    Route::post('change_password','UserController@change_password');  
+    Route::get('create_user_activiry/{id}','ContestController@create_user_activiry')->name('api.create_user_activiry');  
+    Route::post('subscribe_actitvty','ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
+    Route::get('my_contest','ContestController@my_contest')->name('api.my_contest');  
+    Route::get('get_notofication','UserController@get_notofiaction');
+    
 });
-    Route::get('get_all_cities','Api\GeneralController@get_all_cities');
-    Route::get('genereal_info','Api\GeneralController@Genereal_info');
-    Route::get('page/{id}','Api\GeneralController@page');
+    Route::get('get_all_cities','GeneralController@get_all_cities');
+    Route::get('genereal_info','GeneralController@Genereal_info');
+    Route::get('page/{id}','GeneralController@page');
 
-
+});
 // Contest
 

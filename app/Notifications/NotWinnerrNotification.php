@@ -51,7 +51,8 @@ class NotWinnerrNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-           'data' => $this->detaills['body'],
+           'data_en' => $this->detaills['body_en'],
+           'data_ar' => $this->detaills['body_ar'],
         ];
     }
 

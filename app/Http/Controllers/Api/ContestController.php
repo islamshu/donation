@@ -36,13 +36,13 @@ class ContestController extends BaseController
     public function get_all_contest()
     {
         $contestCollection =new ContestCollection(Contest::orderBy('id', 'DESC')->where('is_activity',0)->get());
-        return $this->sendResponse($contestCollection,trans('success.all_prize') );
+        return $this->sendResponse($contestCollection,trans('success.all contest') );
 
     }
     public function get_all_activity()
     {
         $contestCollection =new ActivityCollection(Contest::orderBy('id', 'DESC')->where('is_activity',1)->get());
-        return $this->sendResponse($contestCollection,trans('success.all_prize') );
+        return $this->sendResponse($contestCollection,trans('success.all activity') );
 
     }
 
@@ -110,10 +110,10 @@ class ContestController extends BaseController
                 $contest->update(['is_activity'=>1]);
                 $activity->save();
                 $activityResourse =new ActivityResourse(Contest::find($contest->id));
-                return $this->sendResponse($activityResourse,trans('success.prize') );
+                return $this->sendResponse($activityResourse,trans('success.register true') );
             }else{
                 $contestCollection =new ContestResource(Contest::find($contest->id));
-                return $this->sendResponse($contestCollection,trans('success.prize') );
+                return $this->sendResponse($contestCollection,trans('success.register true') );
             }
             
         }
@@ -182,22 +182,26 @@ class ContestController extends BaseController
             $contest->save();
             $user = User::find($winner);
             $details = [
-                'body' => trans('succuess.Congratulations, you won the contest!'),
+                'body_en' => trans('Congratulations, you won the contest!'),
+                'body_ar' => trans('تهانينا , ربحت المسابقة'),
+
             ];
 
             $user->notify(new WinnerNotification($details));
 
-           $this->notification($user->token, $details['body'], $contest->title, 'contest');
+           $this->notification($user->token, $details['body_ar'], $contest->title, 'contest');
 
            foreach($contest->contentns->where('user_id','!=',$winner) as $key => $contentns){
                $user_no_win= $contentns->user;
               
             $detaills = [
-                'body' => trans('succuess.Better luck next time'),
+                'body_en' => 'Better luck next time',
+                'body_ar' => 'حظا أوفر في مرة قادمة',
+
                ];
             
                $user_no_win->notify(new NotWinnerrNotification($detaills));
-               $this->notification($user_no_win->token, $detaills['body'], $contest->title, 'contest');
+               $this->notification($user_no_win->token, $detaills['body_ar'], $contest->title, 'contest');
            }
          
 

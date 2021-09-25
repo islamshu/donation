@@ -51,7 +51,8 @@ class WinnerNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-           'data' => $this->details['body'],
+            'data_en' => $this->details['body_en'],
+            'data_ar' => $this->details['body_ar'],
         ];
     }
 
