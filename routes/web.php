@@ -52,4 +52,4 @@ Route::group(['prefix' => 'dashbaord'], function() {
 });
 
 
-Route::get('/testtt', 'HomeController@index');
+Route::get('/', 'HomeController@index');

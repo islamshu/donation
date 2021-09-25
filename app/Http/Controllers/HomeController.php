@@ -24,8 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-       put_permanent_env('sasdasd', 'asd');
-        
+    return redirect()->route('admin.dashboard');        
 
     }
 

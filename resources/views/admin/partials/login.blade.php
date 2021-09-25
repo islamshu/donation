@@ -6,9 +6,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<title>مخازن عبقري</title>
-	<!-- Favicon-->
-	<link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+    <title> {{ App\General::first()->name_ar }}</title>
+    <!-- Favicon-->
+    <link rel="icon" href="{{ asset('uploads/'. App\General::first()->logo) }}" type="image/x-icon">
 	<!-- Plugins Core Css -->
 	<link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
 	<!-- Custom Css -->
