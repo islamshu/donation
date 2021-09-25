@@ -108,7 +108,7 @@ class UserController extends BaseController
     public function verfiy_account(Request $request){
         $user = User::where('otp',$request->otp)->first();
         if(!$user){
-          return $this->sendError('error');
+          return $this->sendError(trans('error.no acount'));
         }
         return $this->LoginSuccess($user); 
     }
@@ -116,10 +116,14 @@ class UserController extends BaseController
     {
         if (!Auth::attempt(['phone' => $request->email, 'password' => $request->password])  ){
             if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])  ){
-                return $this->sendError('error');
+                return $this->sendError(trans('error.no user'));
             }
         }
         $user = $request->user();
+        if($user->verfy_account != 1){
+            return $this->sendError(trans('error.you need to verfy your account'));
+
+        }
         $user->token = $request->header('X-Client-FCM-Token');
         $user->save();
         return $this->loginSuccess($user);

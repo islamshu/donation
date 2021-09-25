@@ -33,7 +33,10 @@ return [
     'no_name'=>'The winner has not been determined',
     'no user'=>'you need to login',
     'you need to add lat and long to location'=>'you need to add lat and long to location',
-    'You have already sent your request'=>'You have already sent your request'
+    'You have already sent your request'=>'You have already sent your request',
+    'no user'=>'The password or you email you’ve entered is incorrect',
+    'no account'=>'No account',
+    'you need to verfy your account'=>'you need to verfy your account'
 
     
 

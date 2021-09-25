@@ -32,7 +32,10 @@ return [
     'error Our'=>'لقد حدث خطأ ما',
     'no_name'=>'لم يتم تحديد الفائز بعد',
     'no user'=>'يجب تسجيل الدخول أولا',
-    'You have already sent your request'=>'لقد قمت بارسال طلب من قبل'
+    'You have already sent your request'=>'لقد قمت بارسال طلب من قبل',
+    'no user'=>'كلمة المرور او البريد المستخدم خاطيء',
+    'no account'=>'لا يوجد حساب',
+    'you need to verfy your account'=>'يجب عليك توثيق حسابك',
 
 
     
