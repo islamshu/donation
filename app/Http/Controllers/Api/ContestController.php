@@ -66,7 +66,6 @@ class ContestController extends BaseController
     {
         $now = Carbon::now();
         if(auth('api')->user()->verify != 1){
-            dd(auth('api')->user());
             return $this->sendError(trans('error.you need to verfy your acount'));
         }
         $contest = new Contest();
