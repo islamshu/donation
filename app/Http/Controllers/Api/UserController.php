@@ -67,7 +67,6 @@ class UserController extends BaseController
         $phone = $request->phone;
         $phone_number =  $postal.$phone;
         $phone = User::where('phone',$phone_number)->first();
-        $phone = User::where('phone',$request->phone)->first();
         if($email){
             return $this->sendError(trans('error.email_exists'));
         }
