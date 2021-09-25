@@ -65,7 +65,9 @@ class ContestController extends BaseController
     public function store(Request $request)
     {
         $now = Carbon::now();
+        dd(auth('api')->user());
         if(auth('api')->user()->verfy_account != 1){
+            
             return $this->sendError(trans('error.you need to verfy your acount'));
         }
         $contest = new Contest();
