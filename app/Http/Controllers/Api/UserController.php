@@ -241,7 +241,7 @@ class UserController extends BaseController
         }
         $user->name = $request->name;
         $user->gender = $request->gender;
-        $user->address = $request->address_id;
+        $user->address_id = $request->address_id;
         if($request->image != null){
             $user->image = $request->image->store('user');
         }
