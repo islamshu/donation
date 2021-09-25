@@ -59,7 +59,7 @@
                                     <td>{{ $item->email }}</td>   
                                     <td>{{ $item->type }}</td> 
                                     @if(Route::is('users.famous'))
-                                    @if($item->verfy_account == 0)
+                                    @if($item->verify == 0)
                                     <th><input class="btn btn-success update_cart" true="0" type="button" naa="{{ $item->id }}" value="تفعيل"></th>
                                     @else
                                     <th><input class="btn btn-danger update_cart" true="1" type="button" naa="{{ $item->id }}" value="الفاء تفعيل"></th>

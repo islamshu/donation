@@ -55,7 +55,7 @@
                          @endif
                          @if(@$user->type == 'famous')
 
-                         @if(@$user->verfy_account == 0)
+                         @if(@$user->verify == 0)
                          <div >
                          <input class="btn btn-success update_cart" true="0" type="button" naa="{{ @$user->id }}" value="تفعيل">
                          @else

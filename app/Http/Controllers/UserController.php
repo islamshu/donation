@@ -34,7 +34,7 @@ class UserController extends Controller
     }
     public function verfy_account(Request $request){
         $user = User::find($request->id);
-        $user->verfy_account = $request->status;
+        $user->verify = $request->status;
         $user->save();
     }
     public function create()
