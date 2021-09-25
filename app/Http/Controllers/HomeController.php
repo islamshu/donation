@@ -24,10 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Nexmo::message()->send([
-            'to'   => $number,
-            'from' => '972592722789',
-            'text' => 'Using the facade to send a message.'
-        ]);
+       put_permanent_env('sasdasd', 'asd');
+        
+
     }
+
 }

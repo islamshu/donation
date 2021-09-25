@@ -2,6 +2,7 @@
 
 use App\Contest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Nexmo\Laravel\Facade\Nexmo;
 
 if (! function_exists('generateBarcodeNumber')) {
@@ -27,22 +28,42 @@ if (! function_exists('generateBarcodeNumber')) {
 }
 if (! function_exists('sendSmsOtp')) {
     function sendSmsOtp($to,$otp) {
-        // try{
+        try{
         Nexmo::message()->send([
             'to'   => $to,
             'from' => '972592722789',
             'text' => 'the OTP code for your aAcount is'.' ' .$otp
         ]);
-    // } catch (Throwable $e) {
-    //     // return $e;
+    } catch (Throwable $e) {
+        // return $e;
 
-    //     return false;
-    // }
+        return false;
     }
-    
-  
-
-    
+    }
 }
+        if ( ! function_exists('put_permanent_env'))
+        {
+            function put_permanent_env( $type, $val)
+            {
+                $path = base_path('.env');
+                if (file_exists($path)) {
+                    $val = '"'.trim($val).'"';
+                    if(is_numeric(strpos(file_get_contents($path), $type)) && strpos(file_get_contents($path), $type) >= 0){
+                        file_put_contents($path, str_replace(
+                            $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
+                        ));
+                    }
+                    else{
+                        file_put_contents($path, file_get_contents($path)."\r\n".$type.'='.$val);
+                    }
+                    Artisan::call('cache:clear');
+                }
+           
+
+            }
+        }
+    
+    
+
 
 

@@ -28,7 +28,14 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::post('verfy_account','UserController@verfy_account' )->name('users.verfy_account');
     Route::post('genereal','GeneralController@update' )->name('genereal.store');
     Route::get('genereal','GeneralController@general' )->name('genereal.index');
+    Route::get('get_mail_setting','GeneralController@get_mail_setting' )->name('get_mail_setting');
+    Route::get('get_nexmo_setting','GeneralController@get_nexmo_setting' )->name('get_nexmo_setting');
+    Route::get('get_firebase_setting','GeneralController@get_firebase_setting' )->name('get_firebase_setting');
 
+    Route::post('env_key_update','GeneralController@env_key_update' )->name('env_key_update.update');
+
+    
+    
 
     Route::get('/', function () {
         return view('admin.index');
@@ -45,6 +52,4 @@ Route::group(['prefix' => 'dashbaord'], function() {
 });
 
 
-Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
-    });
+Route::get('/testtt', 'HomeController@index');

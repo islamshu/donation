@@ -95,8 +95,9 @@
                                                 <div class="form-group">
                                                     <div class="form-line">
                                                         <select required  value="{{ old('type') }}" class="form-control"  name="type" id="user_type">
+                                                        
                                                             <option value="" selected disabled>نوع المستخدم</option>
-                                                            <option value="user"  >مستخدم </option>
+                                            `                     <option value="user"  >مستخدم </option>
                                                             <option value="famous"  >مشهور</option>
 
                                                             

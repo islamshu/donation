@@ -57,7 +57,7 @@
                 </li>
                 <li>
                     <a href="#" onClick="return false;" class="menu-toggle">
-                        <i data-feather="user"></i>
+                        <i data-feather="map-pin"></i>
                         <span>المدن</span>
                     </a>
                     <ul class="ml-menu">
@@ -73,17 +73,33 @@
                 </li>
                 <li>
                     <a href="{{ route('genereal.index') }}"  class="menu-toggle">
-                        <i data-feather="user"></i>
+                        <i data-feather="command"></i>
                         <span>البيانات العاملة</span>
                     </a>
                   
                 </li>
                 <li>
                     <a href="{{ route('pages.index') }}"  class="menu-toggle">
-                        <i data-feather="user"></i>
+                        <i data-feather="layout"></i>
                         <span>الصفحات </span>
                     </a>
                   
+                </li>
+                <li>
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i data-feather="settings"></i>
+                        <span>إعدادات التطبيق</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('get_mail_setting') }}">إعدادات البريد الإلكتروني </a>
+                        </li>
+                    
+                        <li>
+                            <a href="{{ route('get_nexmo_setting') }}"> إعدادات بوابة sms    </a>
+                        </li>
+                        
+                    </ul>
                 </li>
                
                
