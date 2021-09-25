@@ -33,7 +33,7 @@ return [
     'no_name'=>'لم يتم تحديد الفائز بعد',
     'no user'=>'يجب تسجيل الدخول أولا',
     'You have already sent your request'=>'لقد قمت بارسال طلب من قبل',
-    'no user'=>'كلمة المرور او البريد المستخدم خاطيء',
+    'no user'=>'لا يوجد مستخدم',
     'no account'=>'لا يوجد حساب',
     'you need to verfy your account'=>'يجب عليك توثيق حسابك',
 
