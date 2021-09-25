@@ -13,17 +13,20 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['middleware' => [ 'changeLanguage'], 'namespace' => 'Api'], function () {
-    
-
-
-Route::post('register-famous', 'UserController@register_famous');
+Route::group(['middleware' => [ 'changeLanguage','header_request_env'], 'namespace' => 'Api'], function () {
+    Route::post('register-famous', 'UserController@register_famous');
 Route::post('register-user', 'UserController@register_user');
 
 Route::post('verfiy_account', 'UserController@verfiy_account');
 Route::post('login', 'UserController@login');
 Route::post('forgit', 'UserController@forgit');
 Route::post('reset', 'UserController@reset');
+});
+Route::group(['middleware' => [ 'changeLanguage','header_request_env','is_login'], 'namespace' => 'Api'], function () {
+    
+
+
+
 
 Route::prefix('famous')->middleware('is_famous')->group(function () {
 Route::resource('contest','ContestController');
@@ -33,6 +36,9 @@ Route::post('more_info','UserController@more_info');
 Route::post('verfiy_account_famous','UserController@verfiy_account_famous');
 Route::post('choceWineer_activity','ContestController@choceWineer_activity');
 Route::post('choceWineer_contest','ContestController@choceWineer');
+Route::post('contest/edit','ContestController@edit');
+
+
 
 
 
@@ -54,6 +60,8 @@ Route::prefix('user')->group(function () {
     Route::post('subscribe_actitvty','ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
     Route::get('my_contest','ContestController@my_contest')->name('api.my_contest');  
     Route::get('get_notofication','UserController@get_notofiaction');
+    Route::get('logout','UserController@logout');
+
     
 });
     Route::get('get_all_cities','GeneralController@get_all_cities');

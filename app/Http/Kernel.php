@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Is_login;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,6 +64,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'is_famous' => \App\Http\Middleware\Famous::class,
         'changeLanguage' => \App\Http\Middleware\ChangeLanguage::class,
+        'is_login' =>Is_login::class,
+        'header_request_env' => \App\Http\Middleware\HeaderRequestEnv::class,
 
     ];
 }

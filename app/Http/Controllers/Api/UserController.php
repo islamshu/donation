@@ -88,6 +88,8 @@ class UserController extends BaseController
         $user->password = bcrypt($request->password);
         $user->gender = $request->gender;
         $otp = rand(1000,9999); 
+        $user->token= $request->header('X-Client-FCM-Token');
+
         $user->otp = $otp;
         $user->address_id = $request->address_id;
         if($request->image != null){
@@ -101,7 +103,7 @@ class UserController extends BaseController
     }  
     public function sendEmail($user){
         Mail::to($user->email)->send(new MailVerfication($user));
-        return $this->sendResponse('success',trans('auth.Check_mail'));
+        return $this->sendResponse('success',trans('success.Check_mail'));
     }
     public function verfiy_account(Request $request){
         $user = User::where('otp',$request->otp)->first();
@@ -118,6 +120,8 @@ class UserController extends BaseController
             }
         }
         $user = $request->user();
+        $user->token = $request->header('X-Client-FCM-Token');
+        $user->save();
         return $this->loginSuccess($user);
     }    
     public function LoginSuccess($user){
@@ -136,6 +140,17 @@ class UserController extends BaseController
         $success['user']=$user;
         return $this->sendResponse('success',$success);
 
+    }
+    public function logout()
+    {
+        $user =  auth('api')->user();
+        if(!$user){
+            return $this->sendError('error');
+        }
+        $user->token = null;
+         $user->save();
+         $user->token()->revoke();
+        return $this->sendResponse('Logout', trans('success.Successfully logged out'));
     }
     public function forgit(Request $request){
         $user = User::where('email',$request->emailOrphone)->orWhere('phone',$request->emailOrphone)->first();

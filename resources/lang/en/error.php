@@ -30,7 +30,9 @@ return [
     'not valid'=>'The contest owner cannot participate',
     'its not activity'=>'its not an activity',
     'error Our'=>'Something went wrong',
-    'no_name'=>'The winner has not been determined'
+    'no_name'=>'The winner has not been determined',
+    'no user'=>'you need to login',
+    'you need to add lat and long to location'=>'you need to add lat and long to location',
 
     
 

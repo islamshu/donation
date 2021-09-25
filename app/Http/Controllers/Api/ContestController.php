@@ -91,6 +91,9 @@ class ContestController extends BaseController
           
             $contest->save();
             if($request->is_activity == 1){
+                if($request->lat == null || $request->long == null){
+                    return $this->sendError(trans('error.you need to add lat and long to location'));
+                }
                 $activity = new Activity();
                 $activity->user_id = auth('api')->id();
                 $activity->lat = $request->lat;
@@ -155,7 +158,7 @@ class ContestController extends BaseController
            if($sub->save()){
                $contest->decrement('remain_codes',1);
                $success = 'success';
-               return $this->sendResponse($success,trans('succuess.done'));
+               return $this->sendResponse($success,trans('succuess.done subscribe'));
            } else{
             return $this->sendError(trans('error.time out '));
            }
@@ -282,7 +285,7 @@ class ContestController extends BaseController
            
     })->get();
         $contestCollection =new ContestCollection($test);
-        return $this->sendResponse($contestCollection,trans('success.all_prize') );
+        return $this->sendResponse($contestCollection,trans('success.all_my_contest') );
 
     }
     
@@ -319,9 +322,75 @@ class ContestController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $contest = Contest::find($request->contest_id);
+        if(!$contest){
+            return $this->sendError(trans('error.no Contest'));
+        }
+        $now = Carbon::now();
+        if(auth('api')->user()->verfy_account != 1){
+            return $this->sendError(trans('error.you need to verfy your acount'));
+        }
+        if(auth('api')->id() != $contest->user_id){
+            return $this->sendError(trans('error.you condint edit this contest'));
+
+        }
+        $contest->title_ar = $request->title_ar;
+        $contest->title_en = $request->title_en;
+        $contest->prize=$request->prize;
+        $contest->user_id = auth('api')->id();
+        $contest->is_visible =$request->is_visible;
+        $contest->total_codes=$request->total_codes;
+        $contest->remain_codes = $request->total_codes;
+        $show = $request->date_to_show .' '. $request->time_to_show;
+        
+        $drow = $request->date_to_drow .' '. $request->time_to_drow;
+        if(($show < $drow && Carbon::now() < $request->date_to_drow  )){
+                     
+            $contest->is_activity == $request->is_activity;
+            $contest->date_to_show= $show;
+            $contest->date_to_drow = $drow;
+            // $contest->time_to_show =  $request->time_to_show;
+            // $contest->time_to_drow= $request->time_to_drow;
+
+            // $contest->code = generateNumber();
+          
+            $contest->save();
+            if($request->is_activity == 1){
+                
+                $activity = new Activity();
+                if($request->lat == null || $request->long == null){
+                    return $this->sendError(trans('error.you need to add lat and long to location'));
+                }
+                $activity->user_id = auth('api')->id();
+                $activity->lat = $request->lat;
+                $activity->long = $request->long;
+                $contest->update(['code'=>null]);
+                $image = QrCode::format('png')
+                ->size(200)->errorCorrection('H')
+                ->generate(route('api.create_user_activiry',$contest->id));
+                $output_file =  time() . '.png';
+        
+        
+                $file =  Storage::disk('local')->put($output_file, $image); 
+                $activity->qr_code =$output_file;
+
+       
+                $activity->constant_id = $contest->id;
+                $contest->update(['is_activity'=>1]);
+                $activity->save();
+                $activityResourse =new ActivityResourse(Contest::find($contest->id));
+                return $this->sendResponse($activityResourse,trans('success.register true') );
+            }else{
+                $contestCollection =new ContestResource(Contest::find($contest->id));
+                return $this->sendResponse($contestCollection,trans('success.register true') );
+            }
+            
+        }
+        return $this->sendError(trans('error.date'));
+    
+
     }
 
     /**
