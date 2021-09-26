@@ -56,6 +56,9 @@ Route::prefix('user')->group(function () {
     Route::get('show_profile','UserController@show_profile');  
     Route::post('change_password','UserController@change_password');  
     Route::get('my_contest','ContestController@my_contest')->name('api.my_contest');  
+    Route::get('my_contest_winner','ContestController@my_contest_winner')->name('api.my_contest_winner');  
+
+    
     Route::get('get_notofication','UserController@get_notofiaction');
     Route::post('search','ContestController@search');
 

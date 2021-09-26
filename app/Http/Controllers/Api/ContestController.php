@@ -346,7 +346,16 @@ class ContestController extends BaseController
         $contestCollection =new ContestCollection($contest);
         return $this->sendResponse($contestCollection,trans('success.all contest') );
 
-       
+    }
+    public function my_contest_winner(Request $request){
+        $data = $request->data;
+
+        $contest= Contest::where('winner_id',auth('api')->id())
+      
+        ->orderBy('id', 'DESC')->get();
+        $contestCollection =new ContestCollection($contest);
+        return $this->sendResponse($contestCollection,trans('success.all contest') );
+
     }
     public function edit(Request $request)
     {
