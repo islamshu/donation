@@ -26,11 +26,85 @@
     </div>
     <!-- Basic Table -->
     <div class="row clearfix">
-        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-8">
+        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-8">
             <div class="card">
                 <div class="header">
                     <h2 style="display: inline">مسابقة {{ @$con->title_ar }}</h2>
-                 
+                    @if(@$con->is_activity == 0)
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card bg-green total-card">
+                                <div class="card-block">
+                                    <div class="text-center p-t-20">
+                                        <h3>عدد الأكواد المتاحة</h3>
+                                        <p class="m-0">{{ @$con->remain_codes }}</p>
+                                    </div>
+                                </div>
+                                <div  class="card-height-80"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card bg-orange total-card">
+                                <div class="card-block">
+                                    <div class="text-center p-t-20">
+                                        <h3>إجمالي مشاهدات المسابقة</h3>
+                                        <p class="m-0">{{ @$con->count_visitor }}</p>
+                                    </div>
+                                </div>
+                                <div  class="card-height-80"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card bg-cyan total-card">
+                                <div class="card-block">
+                                    <div class="text-center p-t-20">
+                                        <h3>عدد المشتركين بالمسابقة</h3>
+                                        <p class="m-0">{{ @$con->contentns->count() }}</p>
+                                    </div>
+                                </div>
+                                <div  class="card-height-80"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card bg-purple total-card">
+                                <div class="card-block">
+                                    <div class="text-center p-t-20">
+                                        <h3>الفائز</h3>
+                                        <p class="m-0">{{ @$con->winner->name == null ? trans('error.no winner'):$con->winner->name }}</p>
+                                    </div>
+                                </div>
+                                <div class="card-height-80"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @else
+                    <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card bg-cyan total-card">
+                            <div class="card-block">
+                                <div class="text-center p-t-20">
+                                    <h3>عدد المشتركين بالفعالية</h3>
+                                    <p class="m-0">{{ @$con->userCactitcity->count() }}</p>
+                                </div>
+                            </div>
+                            <div  class="card-height-80"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card bg-purple total-card">
+                            <div class="card-block">
+                                <div class="text-center p-t-20">
+                                    <h3>الفائز</h3>
+                                    <p class="m-0"></p>
+                                </div>
+                            </div>
+                            <div class="card-height-80"></div>
+                        </div>
+                    </div>
+                </div>
+                    @endif
                     <div class="row clearfix">
                         <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
                             <div class="card">

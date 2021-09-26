@@ -17,7 +17,7 @@ class ActivityResourse extends JsonResource
             'total_codes' => $this->total_codes,
             'remain_codes' => $this->remain_codes,
             'is_visible'=>$this->is_visible,
-            'winner_name' => $this->userCactitcity($this->winner_id_activity),
+            'winner_name' => $this->winner($this->winner_id_activity),
             'prize'=>$this->prize,
             'user_name'=>$this->user->name,
             'user_id'=>$this->user->id,
@@ -63,7 +63,7 @@ class ActivityResourse extends JsonResource
         if($winner_id == null){
             $name = trans('error.no_name');
         }else{
-            $name=$this->winner->name;
+            $name=$this->winner_activity->first . ' '. $this->winner_activity->secand ;
         }
         return $name;
 

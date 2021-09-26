@@ -80,14 +80,16 @@ class ContestController extends BaseController
         $drow = $request->date_to_drow .' '. $request->time_to_drow;
         if(($show < $drow && Carbon::now() < $drow  )){
                      
-            $contest->is_activity == $request->is_activity;
+            $contest->is_activity = $request->is_activity;
             $contest->date_to_show= $show;
             $contest->date_to_drow = $drow;
             // $contest->time_to_show =  $request->time_to_show;
             // $contest->time_to_drow= $request->time_to_drow;
 
             $contest->code = generateNumber();
-          
+            $contest->total_codes=$request->total_codes;
+                $contest->remain_codes = $request->total_codes;
+                $contest->save();
             $contest->save();
             if($request->is_activity == 1){
                 if($request->lat == null || $request->long == null){
@@ -118,9 +120,7 @@ class ContestController extends BaseController
                 $activityResourse =new ActivityResourse(Contest::find($contest->id));
                 return $this->sendResponse($activityResourse,trans('success.register true') );
             }else{
-                $contest->total_codes=$request->total_codes;
-                $contest->remain_codes = $request->total_codes;
-                $contest->save();
+               
                 $contestCollection =new ContestResource(Contest::find($contest->id));
                 return $this->sendResponse($contestCollection,trans('success.register true') );
             }
@@ -233,6 +233,7 @@ class ContestController extends BaseController
     public function choceWineer_activity(Request $request){
 
         $contest = Contest::find($request->contest_id);
+        // dd('dd');
         if($contest->is_activity == 1 ){     
             // dd($cont/est->user_id);    
             // dd(auth('api')->id());
@@ -328,6 +329,11 @@ class ContestController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function search(Request $request){
+        $data = $request->data;
+        $contest= Contest::where('date_to_show','<',Carbon::now())->get();
+        dd($contest);
+    }
     public function edit(Request $request)
     {
         $contest = Contest::find($request->contest_id);
@@ -353,16 +359,16 @@ class ContestController extends BaseController
         $drow = $request->date_to_drow .' '. $request->time_to_drow;
         if(($show < $drow && Carbon::now() < $request->date_to_drow  )){
                      
-            $contest->is_activity == $request->is_activity;
+            $contest->is_activity = $request->is_activity;
             $contest->date_to_show= $show;
             $contest->date_to_drow = $drow;
             // $contest->time_to_show =  $request->time_to_show;
             // $contest->time_to_drow= $request->time_to_drow;
 
             // $contest->code = generateNumber();
+         
           
-           
-            if($request->is_activity == 1){
+            if((int)$request->is_activity == 1){
                 $contest->total_codes=-1;
                 $contest->remain_codes = -1;
                 $contest->save();
@@ -392,9 +398,21 @@ class ContestController extends BaseController
                 $activityResourse =new ActivityResourse(Contest::find($contest->id));
                 return $this->sendResponse($activityResourse,trans('success.register true') );
             }else{
-                $activity = $contest->actitvity->delete();
+                if($contest->actitvity != null){
+                    $activity = $contest->actitvity->delete();
+
+                }
+                if($request->total_codes == null  ){
+                    return $this->sendError(trans('error.you need to add number of cods'));
+
+                }
                 $contest->total_codes=$request->total_codes;
                 $contest->remain_codes = $request->total_codes;
+                if($contest->code == null){
+                    $contest->code = generateNumber();
+
+                }
+
                 $contest->save();
                 $contestCollection =new ContestResource(Contest::find($contest->id));
                 return $this->sendResponse($contestCollection,trans('success.register true') );

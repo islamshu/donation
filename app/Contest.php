@@ -16,6 +16,10 @@ class Contest extends Model
     {
         return $this->belongsTo(User::class, 'winner_id');
     }
+    public function winner_activity()
+    {
+        return $this->belongsTo(SubActicity::class, 'winner_id_activity');
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

@@ -57,6 +57,8 @@ Route::prefix('user')->group(function () {
     Route::post('change_password','UserController@change_password');  
     Route::get('my_contest','ContestController@my_contest')->name('api.my_contest');  
     Route::get('get_notofication','UserController@get_notofiaction');
+    Route::post('search','ContestController@search');
+
     Route::get('logout','UserController@logout');
 
     

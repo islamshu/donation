@@ -25,7 +25,7 @@ class ActivityCollection extends ResourceCollection
                     'total_codes' => $data->total_codes,
                     'remain_codes' => $data->remain_codes,
                     'is_visible'=>$data->is_visible,
-                    'winner_name' => $data->userCactitcity($data->winner_id_activity),
+                    'winner_name' => $this->winner($data),
                     'prize'=>$data->data,
                     'user_name'=>$data->user->name,
                     'user_id'=>$data->user->id,
@@ -73,15 +73,18 @@ class ActivityCollection extends ResourceCollection
                 return 2;
             }
         }
-        protected function winner($winner_id){
-            if($winner_id == null){
+        protected function winner($data){
+            // dd($data);
+            if($data->winner_id_activity == null){
                 $name = trans('error.no_name');
             }else{
-                $name=$this->winner->name;
+                
+                $name=$data->winner_activity->first . ' '. $data->winner_activity->secand ;
             }
             return $name;
     
         }
+      }
     
     
-}
+
