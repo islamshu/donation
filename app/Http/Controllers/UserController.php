@@ -30,11 +30,11 @@ class UserController extends Controller
      */
     public function user()
     {
-        return view('admin.users.index')->with('users',User::where('type','user')->get());
+        return view('admin.users.index')->with('users',User::withoutBanned()->where('type','user')->get());
     }
     public function famous()
     {
-        return view('admin.users.index')->with('users',User::where('type','famous')->get());
+        return view('admin.users.index')->with('users',User::withoutBanned()->where('type','famous')->get());
     }
     public function verfy_account(Request $request){
         $user = User::find($request->id);
