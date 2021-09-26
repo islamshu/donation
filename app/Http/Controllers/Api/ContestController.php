@@ -184,6 +184,9 @@ class ContestController extends BaseController
 
        $contest = Contest::find($request->contest_id);
         // dd(auth('api')->id());
+        if(!$contest){
+            return $this->sendError(trans('error.error code'));
+        }
         if($contest->user_id == auth('api')->id()){
          if($contest->contentns->count() > 0){
             $winner = $contest->contentns->random(1)->first()->user_id;
@@ -234,6 +237,9 @@ class ContestController extends BaseController
 
         $contest = Contest::find($request->contest_id);
         // dd('dd');
+        if(!$contest){
+            return $this->sendError(trans('error.error code'));
+        }
         if($contest->is_activity == 1 ){     
             // dd($cont/est->user_id);    
             // dd(auth('api')->id());
@@ -331,8 +337,16 @@ class ContestController extends BaseController
      */
     public function search(Request $request){
         $data = $request->data;
-        $contest= Contest::where('date_to_show','<',Carbon::now())->get();
-        dd($contest);
+
+        $contest= Contest::where('date_to_show','<',Carbon::now())
+        ->where('title_en','like','%'.$data.'%')
+        ->Orwhere('title_ar','like','%'.$data.'%')
+        ->where('is_visible',1)
+        ->orderBy('id', 'DESC')->get();
+        $contestCollection =new ContestCollection($contest);
+        return $this->sendResponse($contestCollection,trans('success.all contest') );
+
+       
     }
     public function edit(Request $request)
     {
