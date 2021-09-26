@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'changeLanguage' => \App\Http\Middleware\ChangeLanguage::class,
         'is_login' =>Is_login::class,
         'header_request_env' => \App\Http\Middleware\HeaderRequestEnv::class,
+        'is-ban' => \App\Http\Middleware\ForbidBannedUserCustom::class,
+
 
     ];
 }

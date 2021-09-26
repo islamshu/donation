@@ -13,8 +13,12 @@
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="fas fa-home"></i> الرئيسية</a>
                     </li>
-                    <li class="breadcrumb-item active">المستخدمين</li>
+                    @if( !Route::is('user.paned'))
 
+                    <li class="breadcrumb-item active">المستخدمين</li>
+                    @else
+                    <li class="breadcrumb-item active">المستخدمين المحظروين</li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -24,8 +28,12 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
+                    @if( !Route::is('user.paned'))
                     <h2 style="display: inline">المستخدمين</h2>
-                    <a class="btn btn-info" href="{{ route('users.create') }}">اضافة مستخدم جديد</a>
+                    <a class="btn btn-info" href="{{ route('users.create') }}">اضف مستخدم جديد</a>
+                    @else
+                    <h2 style="display: inline">المستخدمين المحظروين</h2>
+                    @endif
                  
                 <div class="body">
                     <div class="table-responsive">
@@ -71,6 +79,18 @@
                                         <a  href="{{ route('users.edit',$item->id) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
                                             <i class="material-icons">edit</i>
                                         </a>
+
+                                        @if(Route::is('user.paned'))
+                                        <a  href="{{ route('user.unpan',$item->id) }}" class="btn bg-black   btn-circle waves-effect waves-circle waves-float" >
+                                            <i class="material-icons">lock_open</i>
+                                        </a>
+                                        @else
+                                        <a  href="{{ route('user.pan',$item->id) }}" class="btn bg-black   btn-circle waves-effect waves-circle waves-float" >
+                                            <i class="material-icons">lock</i>
+                                        </a>
+                                        @endif
+
+                                        
                                         <form style="display: inline" method="post" action="{{ route('users.destroy',$item->id) }}">
                                         @method('delete') @csrf
 
@@ -144,7 +164,7 @@
             }else if(is_ture == 1){
           
                 swal({
-title: "هل أنت متأكد من حذف العنصر من  السلة ؟",
+title: "هل أنت متأكد من إلغاء تفعيل المشهور     ؟",
 icon: "warning",
 buttons: true,
 dangerMode: true,

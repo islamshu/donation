@@ -10,7 +10,7 @@
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="fas fa-home"></i> الرئيسية</a>
                     </li>
-                    <li class="breadcrumb-item active">المنتجات</li>
+                    <li class="breadcrumb-item active">المسابقات</li>
 
                 </ul>
             </div>
@@ -21,8 +21,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2 style="display: inline">المنتجات</h2>
-                    <a class="btn btn-info" href="{{ route('products.create') }}">اضافة منتج جديد</a>
+                    <h2 style="display: inline">المسابقات</h2>
+                    <a class="btn btn-info" href="{{ route('contests.create') }}">اضف مسابقة  جديدة</a>
                  
                 <div class="body">
                     <div class="table-responsive">
@@ -33,37 +33,42 @@
                             <thead>
                                 <tr>
                                     <th># </th>
-                                    <th>اسم المنتج </th>
-                                    <th>الكمية</th>
-                                    <th>السعر</th>
+                                    <th>اسم المسابقة  </th>
+                                    <th>اسم صاحب المسابقة   </th>
+                                    <th> نوع المسابقة    </th>
+                                    <th>حالة المسابقة </th>
+
 
                                     <th>الإجرائات</th>
                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $key=>$item)
+                                @foreach ($contests as $key=>$item)
                                     
                                 <tr>
                                     <td>{{ $key+1 }}</td>
 
-                                    <td>{{ $item->name }}</td>   
-                                    <td>{{ $item->stock }}</td>   
-                                    <td>{{ $item->price }}</td>   
+                                    <td>{{ $item->title_ar }}</td>   
+                             
+                                    <td>{{ $item->user->name }}</td>   
+                                    <td>{{$item->is_activity ==1 ? 'فعالية' : 'مسابقة' }}</td>   
+                                    <td>{!! get_status($item) !!}</td>   
+
 
                         
                                     <td>
-                                        <a  href="{{ route('products.show',encrypt($item->id)) }}" class="btn bg-lime btn-circle waves-effect waves-circle waves-float" >
+                                        <a  href="{{ route('contests.show',$item->id) }}" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
-                                        <a  href="{{ route('products.edit',encrypt($item->id)) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
+                                        <a  href="{{ route('contests.edit',$item->id) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <form style="display: inline" method="post" action="{{ route('products.destroy',$item->id) }}">
-                                        @method('delete') @csrf
-
-                                        <button class=" btn bg-red btn-circle waves-effect waves-circle waves-float delete-confirm" type="submit" > <i class="material-icons">clear</i></button>
-                                    </form>
+                                        <form style="display: inline" method="post" action="{{ route('contests.destroy',$item->id) }}">
+                                            @method('delete') @csrf
+    
+                                            <button class=" btn bg-red btn-circle waves-effect waves-circle waves-float delete-confirm" type="submit" > <i class="material-icons">clear</i></button>
+                                        </form>
                                  
                               
                                         
@@ -74,9 +79,11 @@
                             <tfoot>
                                 <tr>
                                     <th># </th>
-                                    <th>اسم المنتج </th>
-                                    <th>الكمية</th>
-                                    <th>السعر</th>
+                                    <th>اسم المسابقة  </th>
+                                    <th>اسم صاحب المسابقة   </th>
+                                    <th> نوع المسابقة    </th>
+                                    <th>حالة المسابقة </th>
+
 
                                     <th>الإجرائات</th>
                                    

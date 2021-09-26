@@ -8,10 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-class User extends Authenticatable
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
+class User extends Authenticatable implements BannableContract
 {
-    use HasApiTokens, Notifiable,SoftDeletes;
+    use HasApiTokens, Notifiable,SoftDeletes ,Bannable;    
+
 
 
     /**

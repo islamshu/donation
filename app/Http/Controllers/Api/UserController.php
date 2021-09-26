@@ -113,12 +113,17 @@ class UserController extends BaseController
     }
     public function login(Request $request)
     {
+        
         if (!Auth::attempt(['phone' => $request->email, 'password' => $request->password])  ){
             if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])  ){
                 return $this->sendError(trans('error.no user'));
             }
         }
         $user = $request->user();
+        if($user->isBanned()){
+            return $this->sendError(trans('error.You have been temporarily banned from using the app'));
+
+        }
         if($user->verfy_account != 1){
             return $this->sendError(trans('error.you need to verfy your account'));
 

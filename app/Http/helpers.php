@@ -62,6 +62,22 @@ if (! function_exists('sendSmsOtp')) {
 
             }
         }
+
+        if ( ! function_exists('type_contect'))
+        {
+            function get_status( $cont)
+            {
+                $date = $cont->date_to_drow.' '.$cont->time_to_drow;
+        
+                if($cont->remain_codes == 0 ||  Carbon::now() > $date){
+                    return   '<span class="label l-bg-orange shadow-style">منتهية </span>';
+                }elseif($cont->remain_codes != 0 && Carbon::now() < $date){
+                    return    '<span class="label  l-bg-purple  shadow-style">لم تنتهي بعد</span>';
+                }elseif($cont->remain_codes == 0 && Carbon::now() < $date){
+                    return    '<span class="label l-bg-cyan shadow-style">نفذت جميع الأكواد</span>';
+
+                }            }
+        }
     
     
 

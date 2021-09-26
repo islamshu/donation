@@ -74,12 +74,11 @@ class ContestController extends BaseController
         $contest->prize=$request->prize;
         $contest->user_id = auth('api')->id();
         $contest->is_visible =$request->is_visible;
-        $contest->total_codes=$request->total_codes;
-        $contest->remain_codes = $request->total_codes;
+      
         $show = $request->date_to_show .' '. $request->time_to_show;
         
         $drow = $request->date_to_drow .' '. $request->time_to_drow;
-        if(($show < $drow && Carbon::now() < $request->date_to_drow  )){
+        if(($show < $drow && Carbon::now() < $drow  )){
                      
             $contest->is_activity == $request->is_activity;
             $contest->date_to_show= $show;
@@ -94,6 +93,9 @@ class ContestController extends BaseController
                 if($request->lat == null || $request->long == null){
                     return $this->sendError(trans('error.you need to add lat and long to location'));
                 }
+                $contest->total_codes=-1;
+                $contest->remain_codes = -1;
+                $contest->save();
                 $activity = new Activity();
                 $activity->user_id = auth('api')->id();
                 $activity->lat = $request->lat;
@@ -116,6 +118,9 @@ class ContestController extends BaseController
                 $activityResourse =new ActivityResourse(Contest::find($contest->id));
                 return $this->sendResponse($activityResourse,trans('success.register true') );
             }else{
+                $contest->total_codes=$request->total_codes;
+                $contest->remain_codes = $request->total_codes;
+                $contest->save();
                 $contestCollection =new ContestResource(Contest::find($contest->id));
                 return $this->sendResponse($contestCollection,trans('success.register true') );
             }
@@ -342,8 +347,7 @@ class ContestController extends BaseController
         $contest->prize=$request->prize;
         $contest->user_id = auth('api')->id();
         $contest->is_visible =$request->is_visible;
-        $contest->total_codes=$request->total_codes;
-        $contest->remain_codes = $request->total_codes;
+       
         $show = $request->date_to_show .' '. $request->time_to_show;
         
         $drow = $request->date_to_drow .' '. $request->time_to_drow;
@@ -357,10 +361,15 @@ class ContestController extends BaseController
 
             // $contest->code = generateNumber();
           
-            $contest->save();
+           
             if($request->is_activity == 1){
-                
-                $activity = new Activity();
+                $contest->total_codes=-1;
+                $contest->remain_codes = -1;
+                $contest->save();
+                $activity = $contest->actitvity;
+                if($activity == null){
+                    $activity = new Activity(); 
+                }
                 if($request->lat == null || $request->long == null){
                     return $this->sendError(trans('error.you need to add lat and long to location'));
                 }
@@ -368,22 +377,25 @@ class ContestController extends BaseController
                 $activity->lat = $request->lat;
                 $activity->long = $request->long;
                 $contest->update(['code'=>null]);
-                $image = QrCode::format('png')
-                ->size(200)->errorCorrection('H')
-                ->generate(route('api.create_user_activiry',$contest->id));
-                $output_file =  time() . '.png';
-        
-        
-                $file =  Storage::disk('local')->put($output_file, $image); 
-                $activity->qr_code =$output_file;
-
-       
+                if(  $activity->qr_code == null){
+                    $image = QrCode::format('png')
+                    ->size(200)->errorCorrection('H')
+                    ->generate(route('api.create_user_activiry',$contest->id));
+                    $output_file =  time().'.png';
+                    $file =  Storage::disk('local')->put($output_file, $image); 
+                    $activity->qr_code =$output_file;
+                }
+              
                 $activity->constant_id = $contest->id;
                 $contest->update(['is_activity'=>1]);
                 $activity->save();
                 $activityResourse =new ActivityResourse(Contest::find($contest->id));
                 return $this->sendResponse($activityResourse,trans('success.register true') );
             }else{
+                $activity = $contest->actitvity->delete();
+                $contest->total_codes=$request->total_codes;
+                $contest->remain_codes = $request->total_codes;
+                $contest->save();
                 $contestCollection =new ContestResource(Contest::find($contest->id));
                 return $this->sendResponse($contestCollection,trans('success.register true') );
             }
@@ -394,27 +406,5 @@ class ContestController extends BaseController
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
     
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

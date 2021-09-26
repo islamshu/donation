@@ -16,10 +16,11 @@ class Is_login
     public function handle($request, Closure $next)
     {
         if (auth('api')->check()) {
+       
             return $next($request);
         }
         $response = ['success' => false];
-            $response['data'] = trans('error.no user');
+        $response['data'] = trans('error.no user');
         return response()->json($response , 404);
       }
     

@@ -24,6 +24,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 
     @yield('css')
 </head>
@@ -122,18 +124,6 @@ if (this.files && this.files[0]) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
-<script >
-       $(document).ready(function() {
-        $("table").dataTable().fnDestroy();
 
-     $('table').DataTable( {
-
-  dom: 'Bfrtip',
-  buttons: [
-  'copy', 'csv', 'excel', 'print'
-  ]
-} );
-  } );
-</script>
     @yield('script')
 </body>

@@ -14,23 +14,6 @@
                         <div class="sidebar-userpic-name"> {{ auth()->user()->name }} </div>
                     </div>
                 </li>
-                {{-- <li class="active">
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                        <i data-feather="monitor"></i>
-                        <span>Home</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li class="active">
-                            <a href="index.html">Dashboard 1</a>
-                        </li>
-                        <li>
-                            <a href="pages/dashboard/dashboard2.html">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="pages/dashboard/dashboard3.html">Dashboard 3</a>
-                        </li>
-                    </ul>
-                </li> --}}
                 <li>
                     <a href="{{ route('admin.dashboard') }}">
                         <i data-feather="monitor"></i>
@@ -52,6 +35,30 @@
                         <li>
                             <a href="{{ route('users.user') }}"> عموم المستخدين </a>
                         </li>
+                        <li>
+                            <a href="{{ route('user.paned') }}">  المستخدمين المحظورين </a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i data-feather="star"></i>
+                        <span>المسابقات</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('contests.index') }}">رؤية الجميع </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('only-contests') }}"> جميع المسابقات </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('only-activites') }}"> جميع الفعاليات  </a>
+                        </li>
+                        
+                        
                         
                     </ul>
                 </li>
@@ -97,6 +104,9 @@
                     
                         <li>
                             <a href="{{ route('get_nexmo_setting') }}"> إعدادات بوابة sms    </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('get_firebase_setting') }}">  إعدادت firebase     </a>
                         </li>
                         
                     </ul>

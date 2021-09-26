@@ -16,7 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('users',User::get());
+        return view('admin.users.index')->with('users',User::withoutBanned()->get());
+    }
+    public function paindUser()
+    {
+        return view('admin.users.index')->with('users',User::onlyBanned()->get());
     }
 
     /**
@@ -41,6 +45,19 @@ class UserController extends Controller
     {
         return view('admin.users.create')->with('citys',City::get());
     }
+    public function panUser($id){
+        $user = User::find($id);
+        $user->ban();
+        return redirect()->back()->with(['success'=>'تم حظر العضو بنجاح']);
+    }
+    public function unpanUser($id){
+        $user = User::find($id);
+        $user->unban();
+        // dd($user->isNotBanned());
+        return redirect()->back()->with(['success'=>'تم إلغاء حظر العضو بنجاح']);
+    }
+
+    
 
     /**
      * Store a newly created resource in storage.

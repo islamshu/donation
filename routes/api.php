@@ -29,7 +29,6 @@ Route::group(['middleware' => [ 'changeLanguage','header_request_env','is_login'
 
 
 Route::prefix('famous')->middleware('is_famous')->group(function () {
-Route::resource('contest','ContestController');
 Route::post('create_contest','ContestController@store');
 Route::post('contest_update','ContestController@update');
 Route::post('more_info','UserController@more_info');

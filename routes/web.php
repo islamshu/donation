@@ -22,6 +22,16 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::get('/logout','AdminController@logout' )->name('admin.logout');
     Route::resource('users','UserController' );
     Route::resource('pages','PageController' );
+    Route::resource('contests','ContestController');
+    Route::get('panUser/{id}','UserController@panUser')->name('user.pan');
+    Route::get('unpanUser/{id}','UserController@unpanUser')->name('user.unpan');
+
+    Route::get('only-contests','ContestController@contests')->name('only-contests');
+    Route::get('only-activites','ContestController@activites')->name('only-activites');
+
+
+
+    Route::get('painduser','UserController@paindUser')->name('user.paned');
 
     Route::get('get_all_users','UserController@user' )->name('users.user');
     Route::get('get_all_famous','UserController@famous' )->name('users.famous');

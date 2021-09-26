@@ -36,7 +36,8 @@ return [
     'You have already sent your request'=>'You have already sent your request',
     'no user'=>'The password or you email you’ve entered is incorrect',
     'no account'=>'No account',
-    'you need to verfy your account'=>'you need to verfy your account'
+    'you need to verfy your account'=>'you need to verfy your account',
+    'You have been temporarily banned from using the app'=>'You have been temporarily banned from using the app',
 
     
 
