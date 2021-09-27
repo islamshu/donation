@@ -172,6 +172,9 @@ class UserController extends BaseController
     }
     public function reset(Request $request){
         $user = User::where('otp',$request->otp)->first();
+        if(!$user){
+            return $this->sendError('there is no data here');
+        }
         if($request->password != $request->confirm_password){
             return $this->sendError(trans('error.password_match'));
         }
