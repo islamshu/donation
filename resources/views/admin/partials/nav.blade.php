@@ -50,7 +50,11 @@
                         <li class="body">
                             <ul class="user_dw_menu">
                               
-                                
+                                <li>
+                                    <a href="{{ route('admin.show') }}">
+                                        <i class="material-icons">settings</i>الملف الشخصي 
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="{{ route('admin.logout') }}">
                                         <i class="material-icons">power_settings_new</i>تسجيل خروج

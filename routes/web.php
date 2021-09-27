@@ -28,7 +28,8 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
 
     Route::get('only-contests','ContestController@contests')->name('only-contests');
     Route::get('only-activites','ContestController@activites')->name('only-activites');
-
+    Route::get('admin/profile','AdminController@profile')->name('admin.show');
+    Route::post('admin/profile','AdminController@store')->name('admin.update');
 
 
     Route::get('painduser','UserController@paindUser')->name('user.paned');

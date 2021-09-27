@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use Illuminate\Http\Request;
 use Auth;
 class AdminController extends Controller
@@ -23,5 +24,19 @@ class AdminController extends Controller
     public function logout(){
         Auth::logout();
         return redirect()->route('get_login');
+    }
+    public function profile(){
+        $admin = Admin::first();
+        return view('admin.profile')->with('admin',$admin);
+    }
+    public function store(Request $request){
+        $admin = Admin::first();
+        $request_all =  $request->except(['password']);
+        if($request->password != null){
+            $request_all['password'] = bcrypt($request->password);
+        }
+        $admin->update($request_all);
+
+        return redirect()->back()->with(['success'=>'تم تعديل بنجاح']);
     }
 }
