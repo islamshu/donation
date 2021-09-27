@@ -81,16 +81,21 @@
                                         </a>
 
                                         @if(Route::is('user.paned'))
-                                        <a  href="{{ route('user.unpan',$item->id) }}" class="btn bg-black   btn-circle waves-effect waves-circle waves-float" >
-                                            <i class="material-icons">lock_open</i>
-                                        </a>
+                                       
+                                        <form style="display: inline" method="get" action="{{ route('user.unpan',$item->id) }}">
+                                            
+    
+                                            <button class="btn bg-black pen   btn-circle waves-effect waves-circle waves-float" type="submit" > <i class="material-icons">lock_open</i></button>
+                                        </form>
                                         @else
-                                        <a  href="{{ route('user.pan',$item->id) }}" class="btn bg-black   btn-circle waves-effect waves-circle waves-float" >
-                                            <i class="material-icons">lock</i>
-                                        </a>
+                                        <form style="display: inline" method="get" action="{{ route('user.pan',$item->id) }}">
+                                            
+    
+                                            <button class="btn bg-black pen   btn-circle waves-effect waves-circle waves-float" type="submit" > <i class="material-icons">lock</i></button>
+                                        </form>     
                                         @endif
 
-                                        
+                                          
                                         <form style="display: inline" method="post" action="{{ route('users.destroy',$item->id) }}">
                                         @method('delete') @csrf
 
