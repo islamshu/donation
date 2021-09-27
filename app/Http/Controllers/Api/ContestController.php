@@ -348,6 +348,7 @@ class ContestController extends BaseController
 
     }
     public function my_contects(){
+        // dd(auth('api')->id());
         $contest= Contest::where('user_id',auth('api')->id())->where('is_activity',0)->get();
         $contestCollection =new ContestCollection($contest);
         return $this->sendResponse($contestCollection,trans('success.all contest') );
