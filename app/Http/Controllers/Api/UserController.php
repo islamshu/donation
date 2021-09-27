@@ -163,7 +163,7 @@ class UserController extends BaseController
     public function forgit(Request $request){
         $user = User::where('email',$request->emailOrphone)->orWhere('phone',$request->emailOrphone)->first();
         if(!$user){
-            return $this->sendError('there is no data here');
+            return $this->sendError(trans('error.no acount'));
         }
         $user->otp = rand(1000,9999);
         $user->save();
@@ -173,7 +173,7 @@ class UserController extends BaseController
     public function reset(Request $request){
         $user = User::where('otp',$request->otp)->first();
         if(!$user){
-            return $this->sendError('there is no data here');
+            return $this->sendError(trans('error.no acount'));
         }
         if($request->password != $request->confirm_password){
             return $this->sendError(trans('error.password_match'));
