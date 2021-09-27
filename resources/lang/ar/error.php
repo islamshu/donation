@@ -36,7 +36,9 @@ return [
     'no user'=>'لا يوجد مستخدم',
     'no account'=>'لا يوجد حساب',
     'you need to verfy your account'=>'يجب عليك توثيق حسابك',
-    'You have been temporarily banned from using the app'=>'لقد تم حظرك مؤقتا من استخدام التطبيق'
+    'You have been temporarily banned from using the app'=>'لقد تم حظرك مؤقتا من استخدام التطبيق',
+    'no acount'=>'لا يوجد حساب بهذه البيانات تطابق مع سجلاتنا'
+
 
 
     

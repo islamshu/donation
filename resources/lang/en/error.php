@@ -38,6 +38,7 @@ return [
     'no account'=>'No account',
     'you need to verfy your account'=>'you need to verfy your account',
     'You have been temporarily banned from using the app'=>'You have been temporarily banned from using the app',
+    'no acount'=>'No account with this data matches our records'
 
     
 
