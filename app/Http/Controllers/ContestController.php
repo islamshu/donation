@@ -72,7 +72,7 @@ class ContestController extends Controller
 
             $contest->code = generateNumber();
           
-          
+            dd( $contest->remain_codes);
             if($request->is_activity == 1){
                 if($request->lat == null || $request->long == null){
                     return redirect()->back()->with(['error'=>'يجب اضافة خط الطول والعرض لمكان الفعالية']) ->withInput($request->all())
@@ -80,7 +80,7 @@ class ContestController extends Controller
                 }
                 $contest->total_codes=$request->total_codes ?? -1;
                 $contest->remain_codes = $request->total_codes ?? -1;
-                dd( $contest->remain_codes);
+              
                 $contest->save();
                 $activity = new Activity();
                 $activity->user_id = $request->user_id;
