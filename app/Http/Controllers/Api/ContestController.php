@@ -65,9 +65,9 @@ class ContestController extends BaseController
     public function store(Request $request)
     {
         $now = Carbon::now();
-        if(auth('api')->user()->verify != 1){
-            return $this->sendError(trans('error.you need to verfy your acount'));
-        }
+        // if(auth('api')->user()->verify != 1){
+        //     return $this->sendError(trans('error.you need to verfy your acount'));
+        // }
         $contest = new Contest();
         $contest->title_ar = $request->title_ar;
         $contest->title_en = $request->title_en;
@@ -87,16 +87,16 @@ class ContestController extends BaseController
             // $contest->time_to_drow= $request->time_to_drow;
 
             $contest->code = generateNumber();
-            $contest->total_codes=$request->total_codes;
-                $contest->remain_codes = $request->total_codes;
+            $contest->total_codes= $request->total_codes ?? -1;
+            $contest->remain_codes = $request->total_codes ?? -1;
                 $contest->save();
             $contest->save();
             if($request->is_activity == 1){
                 if($request->lat == null || $request->long == null){
                     return $this->sendError(trans('error.you need to add lat and long to location'));
                 }
-                $contest->total_codes=-1;
-                $contest->remain_codes = -1;
+                $contest->total_codes= $request->total_codes ?? -1;
+                $contest->remain_codes = $request->total_codes ?? -1;
                 $contest->save();
                 $activity = new Activity();
                 $activity->user_id = auth('api')->id();
