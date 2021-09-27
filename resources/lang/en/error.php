@@ -27,7 +27,7 @@ return [
     'There is no space'=>'There is no space to subscribe',
     'error code'=>'There is no contest for this code',
     'no user to win'=>'There are no users participating in this contest',
-    'not valid'=>'The contest owner cannot participate',
+    'not valid'=>'You do not have the authority to choose the winner',
     'its not activity'=>'its not an activity',
     'error Our'=>'Something went wrong',
     'no_name'=>'The winner has not been determined',
