@@ -85,7 +85,7 @@
                                         <form style="display: inline" method="get" action="{{ route('user.unpan',$item->id) }}">
                                             
     
-                                            <button class="btn bg-black pen   btn-circle waves-effect waves-circle waves-float" type="submit" > <i class="material-icons">lock_open</i></button>
+                                            <button class="btn bg-black unpen   btn-circle waves-effect waves-circle waves-float" type="submit" > <i class="material-icons">lock_open</i></button>
                                         </form>
                                         @else
                                         <form style="display: inline" method="get" action="{{ route('user.pan',$item->id) }}">
