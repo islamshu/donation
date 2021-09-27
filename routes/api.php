@@ -36,6 +36,8 @@ Route::post('verfiy_account_famous','UserController@verfiy_account_famous');
 Route::post('choceWineer_activity','ContestController@choceWineer_activity');
 Route::post('choceWineer_contest','ContestController@choceWineer');
 Route::post('contest/edit','ContestController@edit');
+Route::get('my_contects','ContestController@my_contects');
+Route::get('my_activites','ContestController@my_activites');
 
 
 
