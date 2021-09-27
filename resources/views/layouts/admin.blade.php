@@ -34,10 +34,8 @@
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30">
-                <img class="loading-img-spin" src="https://madares-abqary.com/uploads/site_logo/7KlIYLEG6UbFTU8N08bl2UR0uwhliCilmAbT9IB9.png" width="20" height="20" alt="admin">
-            </div>
-            <p>Please wait...</p>
+         
+            <p>يرجى الانتظار ... </p>
         </div>
     </div>
     <!-- #END# Page Loader -->
