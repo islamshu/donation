@@ -78,8 +78,8 @@ class ContestController extends Controller
                     return redirect()->back()->with(['error'=>'يجب اضافة خط الطول والعرض لمكان الفعالية']) ->withInput($request->all())
                     ;
                 }
-                $contest->total_codes=-1;
-                $contest->remain_codes = -1;
+                $contest->total_codes=$request->total_codes ?? -1;
+                $contest->remain_codes = $request->total_codes ?? -1;
                 $contest->save();
                 $activity = new Activity();
                 $activity->user_id = $request->user_id;
