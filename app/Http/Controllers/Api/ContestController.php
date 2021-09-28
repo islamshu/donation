@@ -311,13 +311,21 @@ class ContestController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
+        
         $contentn = Contest::find($id);
         if(!$contentn){
             return $this->sendError(trans('error.error Our'));
 
         }
+        if($request->as == 'contest' && $contentn->is_activity == 1 ){
+            return $this->sendError(trans('error.its not contest its activity'));
+        }
+        if($request->as == 'activity' && $contentn->is_activity == 0 ){
+            return $this->sendError(trans('error.its not activity its contest'));
+        }
+        
         $contentn->increment('count_visitor');
         // $contentn->count_visitor =$contentn->count_visitor +1;
         // $contentn->save();

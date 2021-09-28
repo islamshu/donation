@@ -24,6 +24,53 @@
                         <i class="fas fa-expand"></i>
                     </a>
                 </li>
+                <li class="dropdown dropdown-notifications">
+                    @php
+                        $notifications = auth()->user()->unreadNotifications;
+                        $count = auth()->user()->unreadNotifications->count();
+
+                    @endphp
+                    <a href="#" onClick="return false;" class="dropdown-toggle" data-bs-toggle="dropdown"data-toggle="dropdown"
+                        role="button">
+                        <i class="far fa-bell"></i>
+                        <span class="notif-count"  data-count="{{ $count }}">{{ $count }}</span>
+                    </a>
+                    <ul class="dropdown-menu pullDown" style="
+                    height: auto;
+                " >
+                        <li class="header">الاشعارات</li>
+                        <li class="body" style="width: 100%">
+
+                            <ul class="menu" >
+                                  
+                         
+                                <li class="scrollable-container">
+                                    @forelse  ($notifications as $item)
+
+                                    <a href="{{ route('show_notify',$item->id) }}" >
+                                        <span class="table-img msg-user">
+                                            <img src="{{ asset('uploads/user/deflut.png') }}" alt="">
+                                        </span>
+                                        <span class="menu-info">
+                                            <span class="menu-title">{{$item->data['title'] }}</span>
+                                            <span class="menu-desc">
+                                                <i class="material-icons"></i> 
+                                            </span>
+                                        </span>
+                                    </a>
+                                    @empty
+                                    <a style="color: black;text-align: center" href="#" onClick="return false;">لا يوجد اشعارات</a>
+                                    @endforelse
+                                </li>
+                          
+
+                              
+                            </ul>
+
+                        </li>
+                       
+                    </ul>
+                </li>
                 <!-- #END# Full Screen Button -->
                 <!-- #START# Notifications-->
                 

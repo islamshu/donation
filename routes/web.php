@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::get('only-activites','ContestController@activites')->name('only-activites');
     Route::get('admin/profile','AdminController@profile')->name('admin.show');
     Route::post('admin/profile','AdminController@store')->name('admin.update');
+    Route::get('show_notify/{id}','UserController@show_notify')->name('show_notify');
 
 
     Route::get('painduser','UserController@paindUser')->name('user.paned');

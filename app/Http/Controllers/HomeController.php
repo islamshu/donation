@@ -24,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        // $notifications = auth()->user()->unreadNotifications;
     return redirect()->route('admin.dashboard');        
 
     }

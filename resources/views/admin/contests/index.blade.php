@@ -1,5 +1,12 @@
 @extends('layouts.admin')
 @section('content')
+@section('css')
+    <style>
+        .dropdown-trigger{
+            display: none !important;
+        }
+    </style>
+@endsection
 <div class="container-fluid">
     <div class="block-header">
         <div class="row">
@@ -21,9 +28,44 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2 style="display: inline">المسابقات</h2>
-                    <a class="btn btn-info" href="{{ route('contests.create') }}">اضف مسابقة  جديدة</a>
-                 
+                    <h2 >المسابقات</h2>
+                    <br>
+                    <a style="display: inline-block" class="btn btn-info" href="{{ route('contests.create') }}">اضف مسابقة  جديدة</a>
+                    @if(Route::is('only-contests'))
+                 <form  style="display: inline-block;direction: ltr;width: 80%;" action="{{ route('only-contests') }}" method="get" >
+                    @elseif(Route::is('only-activites'))
+                    <form  style="display: inline-block;direction: ltr;width: 80%;" action="{{ route('only-activites') }}" method="get" >
+                        @endif
+                <div class="row clearfix" @if(Route::is('contests.index')) style="display: none" @endif>
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div class="form-group">
+                            
+                            <input type="submit" class="btn btn-info" value="فلتر">
+
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <select name="status" class="form-control" id="" style="text-align: right">
+                                    <option disabled selected value="">عرص حسب الحالة</option>
+
+                                    <option value="1" @if(@$request->status == 1) selected @endif>فعالة</option>
+                                    <option value="2"@if(@$request->status == 2) selected @endif>منتهية</option>
+                                    <option value="3"@if(@$request->status == 3) selected @endif>فعالة لكن مكتمل العدد</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                </div>
+                </form>
                 <div class="body">
                     <div class="table-responsive">
                         @include('admin.partials._success')

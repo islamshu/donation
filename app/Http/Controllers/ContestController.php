@@ -21,12 +21,30 @@ class ContestController extends Controller
     {
         return view('admin.contests.index')->with('contests',Contest::orderBy('id', 'DESC')->get());
     }
-    public function contests(){
-        return view('admin.contests.index')->with('contests',Contest::where('is_activity',0)->orderBy('id', 'DESC')->get());
+    public function contests( Request $request){
+        // dd($request);
+        $contest= Contest::query()->where('is_activity',0)->orderBy('id', 'DESC');
+        if($request->status == 1){
+            $contest->where('remain_codes','>',0)->where('date_to_drow','>',Carbon::now());
+        }elseif($request->status == 2){
+            $contest->where('remain_codes','==',0)->where('date_to_drow','<',Carbon::now());
+        }
+        elseif($request->status == 3){
+            $contest->where('remain_codes','==',0)->where('date_to_drow','>',Carbon::now());
+        }
+        return view('admin.contests.index')->with('contests',$contest->get())->with('request',$request);
     }
-    public function activites(){
-        return view('admin.contests.index')->with('contests',Contest::where('is_activity',1)->orderBy('id', 'DESC')->get());
-    }
+    public function activites(Request $request){
+        $contest= Contest::query()->where('is_activity',1)->orderBy('id', 'DESC');
+        if($request->status == 1){
+            $contest->where('remain_codes','>',0)->where('date_to_drow','>',Carbon::now());
+        }elseif($request->status == 2){
+            $contest->where('remain_codes','==',0)->where('date_to_drow','<',Carbon::now());
+        }
+        elseif($request->status == 3){
+            $contest->where('remain_codes','==',0)->where('date_to_drow','>',Carbon::now());
+        }
+        return view('admin.contests.index')->with('contests',$contest->get())->with('request',$request);    }
 
     /**
      * Show the form for creating a new resource.
@@ -125,6 +143,7 @@ class ContestController extends Controller
      */
     public function show($id)
     {
+      
         return view('admin.contests.show')->with('con',Contest::find($id));
     }
 

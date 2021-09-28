@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\AdditionalUser;
+use App\Admin;
+use App\Events\NewUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
@@ -12,6 +14,7 @@ use App\Http\Resources\UserResource;
 use App\IDFamous;
 use App\Mail\mailerification;
 use App\Mail\MailVerfication;
+use App\Notifications\NewUserNotification;
 use App\User;
 use Carbon\Carbon;
 use Validator;
@@ -59,6 +62,21 @@ class UserController extends BaseController
         $more = new AdditionalUser();
         $more->user_id = $user->id;
         $more->save();
+        $data=[
+            'user_id'=>$user->id,
+            'title'=>'تم تسجيل مشهور جديد',
+            'url'=>route('users.show',$user->id),
+                   ];
+        event(new NewUser($data));
+        $details = [
+            'user_id'=>$user->id,
+            'title'=>'تم تسجيل مشهور جديد',
+            'url'=>route('users.show',$user->id),
+          
+        ];
+        $admin = Admin::first();
+        $admin->notify(new NewUserNotification ($details));
+
         return $this->sendEmail($user);
     }
     public function register_user(Request $request){
@@ -98,6 +116,21 @@ class UserController extends BaseController
         }
         $user->save();
         sendSmsOtp($user->phone,$otp);
+
+        $data=[
+            'user_id'=>$user->id,
+            'title'=>'تم تسجيل مستخدم جديد',
+            'url'=>route('users.show',$user->id),
+                   ];
+        event(new NewUser($data));
+        $details = [
+            'user_id'=>$user->id,
+            'title'=>'تم تسجيل مستخدم جديد',
+            'url'=>route('users.show',$user->id),
+          
+        ];
+        $admin = Admin::first();
+        $admin->notify(new NewUserNotification ($details));
         return $this->sendEmail($user);
     }  
     public function sendEmail($user){

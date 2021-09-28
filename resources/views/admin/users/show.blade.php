@@ -52,6 +52,8 @@
                             العمر : {{ @$user->getAge()}}
                              
                          </p>
+                         
+                       
                          @endif
                          @if(@$user->type == 'famous')
 
@@ -79,10 +81,25 @@
                             <div class="card project_widget">
                                 <div class="header">
                                     @if(@$user->type == 'famous')
-                                    <h2>بيانات الحساب</h2>
+                                    <h2 style="display: inline">بيانات الحساب</h2>
                                     @else
-                                    <h2>المعلومات الشخصية</h2>
+                                    <h2 style="display: inline">المعلومات الشخصية</h2>
                                     @endif
+
+
+                                    @if ($user->isBanned())
+                       <form style="display: inline" method="get" action="{{ route('user.unpan',$user->id) }}">
+                                          
+                        <input class="btn bg-black unpen  " type="submit" value="إلغاء الحظر">
+
+                      </form>  
+                      @else
+                      <form style="display: inline" method="get" action="{{ route('user.pan',$user->id) }}">
+                                          
+                        <input class="btn bg-black pen  " type="submit" value="حظر">
+
+                      </form> 
+                       @endif
                                     
                                 </div>
                                

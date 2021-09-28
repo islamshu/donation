@@ -37,8 +37,9 @@ return [
     'no account'=>'لا يوجد حساب',
     'you need to verfy your account'=>'يجب عليك توثيق حسابك',
     'You have been temporarily banned from using the app'=>'لقد تم حظرك مؤقتا من استخدام التطبيق',
-    'no acount'=>'لا يوجد حساب بهذه البيانات تطابق مع سجلاتنا'
-
+    'no acount'=>'لا يوجد حساب بهذه البيانات تطابق مع سجلاتنا',
+    'its not contest its activity'=>'هذه ليست مسابقة انما فعالية',
+    'its not activity its contest'=>'هذه ليست فعالية انما مسابقة',
 
 
     

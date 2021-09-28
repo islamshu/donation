@@ -35,7 +35,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card bg-green total-card">
                                 <div class="card-block">
-                                    <div class="text-center p-t-20">
+                                    <div class="text-center p-t-30 p-b-30  ">
                                         <h3>عدد الأكواد المتاحة</h3>
                                         <p class="m-0">{{ @$con->remain_codes }}</p>
                                     </div>
@@ -47,7 +47,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card bg-orange total-card">
                                 <div class="card-block">
-                                    <div class="text-center p-t-20">
+                                    <div class="text-center p-t-30 p-b-30  ">
                                         <h3>إجمالي مشاهدات المسابقة</h3>
                                         <p class="m-0">{{ @$con->count_visitor }}</p>
                                     </div>
@@ -59,7 +59,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card bg-cyan total-card">
                                 <div class="card-block">
-                                    <div class="text-center p-t-20">
+                                    <div class="text-center p-t-30 p-b-30  ">
                                         <h3>عدد المشتركين بالمسابقة</h3>
                                         <p class="m-0">{{ @$con->contentns->count() }}</p>
                                     </div>
@@ -70,7 +70,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card bg-purple total-card">
                                 <div class="card-block">
-                                    <div class="text-center p-t-20">
+                                    <div class="text-center p-t-30 p-b-30  ">
                                         <h3>الفائز</h3>
                                         <p class="m-0">{{ @$con->winner->name == null ? trans('error.no winner'):$con->winner->name }}</p>
                                     </div>
@@ -84,7 +84,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card bg-cyan total-card">
                             <div class="card-block">
-                                <div class="text-center p-t-20">
+                                <div class="text-center p-t-30 p-b-30  ">
                                     <h3>عدد المشتركين بالفعالية</h3>
                                     <p class="m-0">{{ @$con->userCactitcity->count() }}</p>
                                 </div>
@@ -95,7 +95,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card bg-purple total-card">
                             <div class="card-block">
-                                <div class="text-center p-t-20">
+                                <div class="text-center p-t-30 p-b-30  ">
                                     <h3>الفائز</h3>
                                     <p class="m-0"></p>
                                 </div>

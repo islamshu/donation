@@ -71,7 +71,7 @@
                                     <th><input class="btn btn-success update_cart" true="0" type="button" naa="{{ $item->id }}" value="تفعيل"></th>
                                     @else
                                     <th><input class="btn btn-danger update_cart" true="1" type="button" naa="{{ $item->id }}" value="الفاء تفعيل"></th>
-                                @endif
+                                   @endif
                                     @endif                                    <td>
                                         <a  href="{{ route('users.show',$item->id) }}" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
                                             <i class="material-icons">remove_red_eye</i>
@@ -85,13 +85,13 @@
                                         <form style="display: inline" method="get" action="{{ route('user.unpan',$item->id) }}">
                                             
     
-                                            <button class="btn bg-black unpen   btn-circle waves-effect waves-circle waves-float" type="submit" > <i class="material-icons">lock_open</i></button>
+                                            <button class="btn bg-black unpen    btn-circle waves-effect waves-circle waves-float" title="إلفاء حظر" type="submit" > <i class="material-icons">lock_open</i></button>
                                         </form>
                                         @else
                                         <form style="display: inline" method="get" action="{{ route('user.pan',$item->id) }}">
                                             
     
-                                            <button class="btn bg-black pen   btn-circle waves-effect waves-circle waves-float" type="submit" > <i class="material-icons">lock</i></button>
+                                            <button class="btn bg-black pen   btn-circle waves-effect waves-circle waves-float"  title=" حظر" type="submit" > <i class="material-icons">lock</i></button>
                                         </form>     
                                         @endif
 

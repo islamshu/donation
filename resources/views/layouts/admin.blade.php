@@ -75,6 +75,42 @@
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+      Pusher.logToConsole = true;
+
+  var pusher = new Pusher('8778268e2fd280bbce85', {
+      cluster: 'mt1'
+    });
+</script>
+<script>
+  var notificationsWrapper = $('.dropdown-notifications');
+var notificationsToggle = notificationsWrapper.find('a[data-toggle]');
+var notificationsCountElem = notificationsToggle.find('span[data-count]');
+var notificationsCount = parseInt(notificationsCountElem.data('count'));
+var notifications = notificationsWrapper.find('li.scrollable-container');
+
+// Subscribe to the channel we specified in our Laravel Event
+var channel = pusher.subscribe('new-user');
+// Bind a function to a Event (the full Laravel class)
+channel.bind('App\\Events\\NewUser', function (data) {
+    var existingNotifications = notifications.html();
+   
+    var newNotificationHtml = `<a href="`+data.url+`"><span class="table-img msg-user">
+                                            <img src="`+ `{{asset('uploads/user/deflut.png')  }}` + `" alt="">
+                                        </span><span class="menu-info"><span class="menu-title">` + data.title +`</span><span class="menu-desc">
+                                                <i class="material-icons"></i> 
+                                            </span>
+                                        </span>
+                                    </a>` ;
+    notifications.html(newNotificationHtml + existingNotifications);
+    notificationsCount += 1;
+    notificationsCountElem.attr('data-count', notificationsCount);
+    notificationsWrapper.find('.notif-count').text(notificationsCount);
+    notificationsWrapper.show();
+});
+</script>
+
 <script>
 
  

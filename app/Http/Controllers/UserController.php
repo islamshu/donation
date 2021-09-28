@@ -28,6 +28,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function show_notify($id)
+    {
+        $notification = auth()->user()->notifications()->where('id', $id)->first();
+
+        if ($notification) {
+            $notification->markAsRead();
+            return redirect($notification->data['url']);
+        }
+    }
     public function user()
     {
         return view('admin.users.index')->with('users',User::withoutBanned()->where('type','user')->get());
