@@ -31,7 +31,7 @@ class ContestResource extends JsonResource
     protected function get_status($cont){
         $date = $cont->date_to_drow;
         
-        if($cont->remain_codes == 0 ||  Carbon::now() > $date){
+        if($cont->remain_codes == 0 &&  Carbon::now() > $date){
             return 0;
         }elseif($cont->remain_codes != 0 && Carbon::now() < $date){
             return 1;
