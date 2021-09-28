@@ -108,6 +108,9 @@
                         <li>
                             <a href="{{ route('get_firebase_setting') }}">  إعدادت firebase     </a>
                         </li>
+                        <li>
+                            <a href="{{ route('get_pusher_setting') }}">  إعدادت pusher     </a>
+                        </li>
                         
                     </ul>
                 </li>

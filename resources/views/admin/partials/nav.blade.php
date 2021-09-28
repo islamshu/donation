@@ -59,7 +59,7 @@
                                         </span>
                                     </a>
                                     @empty
-                                    <a style="color: black;text-align: center" href="#" onClick="return false;">لا يوجد اشعارات</a>
+                                    <a class="delll" style="color: black;text-align: center" href="#" onClick="return false;">لا يوجد اشعارات</a>
                                     @endforelse
                                 </li>
                           

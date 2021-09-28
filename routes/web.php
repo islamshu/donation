@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::get('get_mail_setting','GeneralController@get_mail_setting' )->name('get_mail_setting');
     Route::get('get_nexmo_setting','GeneralController@get_nexmo_setting' )->name('get_nexmo_setting');
     Route::get('get_firebase_setting','GeneralController@get_firebase_setting' )->name('get_firebase_setting');
+    Route::get('get_pusher_setting','GeneralController@get_pusher_setting' )->name('get_pusher_setting');
 
     Route::post('env_key_update','GeneralController@env_key_update' )->name('env_key_update.update');
 

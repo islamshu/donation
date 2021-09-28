@@ -108,6 +108,8 @@ channel.bind('App\\Events\\NewUser', function (data) {
     notificationsCountElem.attr('data-count', notificationsCount);
     notificationsWrapper.find('.notif-count').text(notificationsCount);
     notificationsWrapper.show();
+    $('.delll').empty();
+
 });
 </script>
 

@@ -30,6 +30,10 @@ class GeneralController extends Controller
     public function get_firebase_setting(){
         return view('admin.setting.firebase');
     }
+    public function get_pusher_setting(){
+        return view('admin.setting.pusher');
+        
+    }
     public function env_key_update(Request $request)
     {
         // dd($request);
