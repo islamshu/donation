@@ -85,6 +85,18 @@ input[type=submit]:hover {
 
   <form action="{{ route('api.subscribe_actitvty') }}"  method="post" >
     @csrf
+
+    <div class="row">
+    
+      <div class="col-25">
+        <label for="fnamedd">البريد الإلكتروني</label>
+      </div>
+      <div class="col-75">
+        <input type="email" id="fnamedd" value="{{ old('email') }}"  required name="email" placeholder="البريد الإلكتروني">
+      </div>
+      
+     
+    </div>
     <div class="row">
       <div >
         <input type="text" id="fname" name="constant_id" value="{{ $contest->id }}" hidden placeholder="Your name..">
@@ -117,15 +129,7 @@ input[type=submit]:hover {
       </div>
       
     </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="phone"> البريد الإلكتروني</label>
-      </div>
-      <div class="col-75">
-        <input type="email" id="phone" value="{{ old('email') }}" required name="email" placeholder="رقم الهاتف ">
-      </div>
-      
-    </div>
+ 
     <div class="row">
       <div class="col-25">
         <label for="country">المدينة</label>
