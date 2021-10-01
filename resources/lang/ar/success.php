@@ -28,6 +28,8 @@ return [
     'all_my_contest'=>'جميع مسابقاتي',
     'content'=>'مسابقة',
     'done subscribe'=>'تم الأشتراك بنجاح',
+    'all_contest'=>'جميع المسابقات',
+    'all_actitviy'=>'جميع الفعاليات'
     
 
 

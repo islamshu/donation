@@ -327,7 +327,7 @@ class ContestController extends BaseController
             $contest->where('date_to_drow','<',Carbon::now());
         }
         $contestCollection =new ContestCollection($contest->get());
-        return $this->sendResponse($contestCollection,trans('success.all_my_contest') );
+        return $this->sendResponse($contestCollection,trans('success.all_contest') );
         
     }
     public function get_activity_by_status(Request $request){
@@ -339,7 +339,7 @@ class ContestController extends BaseController
             $contest->where('date_to_drow','<',Carbon::now());
         }
         $contestCollection =new ContestCollection($contest->get());
-        return $this->sendResponse($contestCollection,trans('success.all_my_contest') );
+        return $this->sendResponse($contestCollection,trans('success.all_actitviy') );
         
     }
     

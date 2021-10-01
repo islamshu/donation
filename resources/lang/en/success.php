@@ -27,7 +27,9 @@ return [
     'winner'=>'winner',
     'all_my_contest'=>'this is all my contest',
     'content'=>'contest',
-    'done subscribe'=>'Successfully subscribed'
+    'done subscribe'=>'Successfully subscribed',
+    'all_contest'=>'All contest',
+    'all_actitviy'=>'All activity'
     
 
 
