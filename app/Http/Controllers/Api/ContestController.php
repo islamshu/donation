@@ -300,6 +300,14 @@ class ContestController extends BaseController
 
 
     }
+    public function my_activity(){
+        $test=  Contest::whereHas('userCactitcity', function ($query) {
+            $query->where('email', '=', auth('api')->user()->email);
+               
+        })->get();
+            $contestCollection =new ActivityCollection($test);
+            return $this->sendResponse($contestCollection,trans('success.all_my_contest') );   
+    }
     public function my_contest(){
         // dd(auth('api')->id());
       $test=  Contest::whereHas('contentns', function ($query) {
