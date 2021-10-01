@@ -271,15 +271,21 @@ class ContestController extends BaseController
     }
     public function subscribe_actitvty(Request $request){
         $contest = Contest::find($request->constant_id);
+        
         $show =  $contest->date.' '.$contest->time_to_show;
         $drow =  $contest->date_to_drow.' '.$contest->time_to_drow;
         if($show <Carbon::now() && $drow  > Carbon::now()){
+            $subs = SubActicity::where('contest_id',$request->constant_id)->where('email',$request->email)->first();
+            if($subs){
+               return redirect()->back()->with(['error'=>trans('error.you are alerdy exists')]);
+            }
         $sub = new SubActicity();
         $sub->first = $request->first_name;
         $sub->secand = $request->secand_name;
         $sub->contest_id = $request->constant_id;
         $sub->city_id = $request->city_id;
         $sub->phone = $request->phone;
+        $sub->email = $request->email;
         if($sub->save()){
         return view('form_api.success');
         }
@@ -317,7 +323,6 @@ class ContestController extends BaseController
         $contentn = Contest::find($id);
         if(!$contentn){
             return $this->sendError(trans('error.error Our'));
-
         }
         if($request->as == 'contest' && $contentn->is_activity == 1 ){
             return $this->sendError(trans('error.its not contest its activity'));

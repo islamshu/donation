@@ -81,6 +81,8 @@ input[type=submit]:hover {
 <h2>التسجيل التسجيل بفعالية {{ $contest->title_ar }}</h2>
 
 <div class="container">
+  @include('admin.partials._error')
+
   <form action="{{ route('api.subscribe_actitvty') }}"  method="post" >
     @csrf
     <div class="row">
@@ -91,7 +93,7 @@ input[type=submit]:hover {
         <label for="fname"> الاسم الاول</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" required name="first_name" placeholder="الاسم الأول">
+        <input type="text" id="fname" value="{{ old('first_name') }}"  required name="first_name" placeholder="الاسم الأول">
       </div>
       
      
@@ -102,7 +104,7 @@ input[type=submit]:hover {
         <label for="lname"> الاسم الاخير</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lname" required name="secand_name" placeholder="الاسم الأخير">
+        <input type="text" id="lname" value="{{ old('secand_name') }}" required name="secand_name" placeholder="الاسم الأخير">
       </div>
      
     </div>
@@ -111,7 +113,16 @@ input[type=submit]:hover {
         <label for="phone">  رقم الهاتف</label>
       </div>
       <div class="col-75">
-        <input type="number" id="phone" required name="phone" placeholder="رقم الهاتف ">
+        <input type="number" id="phone" value="{{ old('phone') }}"  required name="phone" placeholder="رقم الهاتف ">
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="phone"> البريد الإلكتروني</label>
+      </div>
+      <div class="col-75">
+        <input type="email" id="phone" value="{{ old('email') }}" required name="email" placeholder="رقم الهاتف ">
       </div>
       
     </div>
