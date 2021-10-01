@@ -280,7 +280,7 @@ class ContestController extends BaseController
         if($show <Carbon::now() && $drow  > Carbon::now()){
             $subs = SubActicity::where('contest_id',$request->constant_id)->where('email',$request->email)->first();
             if($subs){
-               return redirect()->back()->with(['error'=>trans('error.you are alerdy exists')]);
+               return redirect()->back()->with(['error'=>trans('error.you are alerdy exists')])->withInput();
             }
         $sub = new SubActicity();
         $sub->first = $request->first_name;
