@@ -22,6 +22,13 @@ input[type=number], select, textarea {
   border-radius: 4px;
   resize: vertical;
 }
+input[type=email], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 
 label {
   padding: 12px 12px 12px 0;
