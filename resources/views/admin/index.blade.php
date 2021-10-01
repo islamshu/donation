@@ -17,14 +17,14 @@
         <div class="col-lg-3 col-sm-6">
             <div class="support-box text-center l-bg-red">
            
-                <div class="text m-t-10 m-b-10" style="font-size: 20px">عدد المسابقات</div>
+                <div class="text m-t-10 m-b-10" style="font-size: 20px">إجمالي المسابقات</div>
                 <h2 class="m-b-0">{{App\Contest::where('is_activity',0)->count() }}
                 </h2>
             </div>
         </div>
         <div class="col-lg-3 col-sm-6">
             <div class="support-box text-center l-bg-cyan">
-                <div class="text m-t-10 m-b-10" style="font-size: 20px">عدد الفعاليات   </div>
+                <div class="text m-t-10 m-b-10" style="font-size: 20px">إجمالي الفعاليات   </div>
                 <h2 class="m-b-0">{{App\Contest::where('is_activity',1)->count() }}
                 </h2>
             </div>
