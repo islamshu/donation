@@ -59,6 +59,9 @@ Route::prefix('user')->group(function () {
     Route::post('change_password','UserController@change_password');  
     Route::get('my_contest','ContestController@my_contest')->name('api.my_contest');  
     Route::get('my_activity','ContestController@my_activity')->name('api.my_activity');  
+    Route::get('get_contest_by_status','ContestController@get_contest_by_status')->name('api.get_contest_by_status');  
+
+    
 
     Route::get('my_contest_winner','ContestController@my_contest_winner')->name('api.my_contest_winner');  
 

@@ -318,6 +318,18 @@ class ContestController extends BaseController
         return $this->sendResponse($contestCollection,trans('success.all_my_contest') );
 
     }
+    public function get_contest_by_status(Request $request){
+        $contest= Contest::query()->where('is_activity',0)->orderBy('id', 'DESC');
+        if($request->status == '1'){
+            $contest->where('remain_codes','>',0)->where('date_to_drow','>',Carbon::now());
+            
+        }elseif($request->status == 2){
+            $contest->where('date_to_drow','<',Carbon::now());
+        }
+        $contestCollection =new ContestCollection($contest->get());
+        return $this->sendResponse($contestCollection,trans('success.all_my_contest') );
+        
+    }
     
 
     
