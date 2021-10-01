@@ -41,7 +41,9 @@ return [
     'no acount'=>'No account with this data matches our records',
     'its not contest its activity'=>'its not contest its activity',
     'its not activity its contest'=>'its not activity its contest',
-    'you are alerdy exists'=>'you have already subscribed in this activity'
+    'you are alerdy exists'=>'you have already subscribed in this activity',
+    'you need to add code'=>'you need to add code'
+
 
 
     

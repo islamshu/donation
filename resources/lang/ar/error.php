@@ -40,7 +40,8 @@ return [
     'no acount'=>'لا يوجد حساب بهذه البيانات تطابق مع سجلاتنا',
     'its not contest its activity'=>'هذه ليست مسابقة انما فعالية',
     'its not activity its contest'=>'هذه ليست فعالية انما مسابقة',
-    'you are alerdy exists'=>'لقد قمت بالاشتراك بهذه الفعالية من قبل'
+    'you are alerdy exists'=>'لقد قمت بالاشتراك بهذه الفعالية من قبل',
+    'you need to add code'=>'يجب ان تدخل كود للاشتراك بالمسابقة'
 
 
     

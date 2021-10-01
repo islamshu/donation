@@ -134,14 +134,17 @@ class ContestController extends BaseController
 
     }
     public function subscribe(Request $request){
+      if($request->code == null){
+        return $this->sendError(trans('error.you need to add code'));
+      }
         $contest = Contest::where('code',$request->code)->first();
-        // dd($contest);
+        
         // dd(auth('api')->id());
-        if($contest->user_id == auth('api')->id()){
-            return $this->sendError(trans('error.The contest owner cannot participate'));
-        }
+      
         if($contest){
-         
+            if($contest->user_id == auth('api')->id()){
+                return $this->sendError(trans('error.The contest owner cannot participate'));
+            }
             if(Contestant::where('user_id',auth('api')->id())->where('contest_id',$contest->id)->first()){
                 
                 return $this->sendError(trans('error.your alredy exits'));
