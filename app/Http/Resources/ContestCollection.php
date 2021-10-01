@@ -48,7 +48,7 @@ class ContestCollection extends ResourceCollection
     protected function get_status($cont){
         $date = $cont->date_to_drow;
         
-        if($cont->remain_codes == 0 &&   Carbon::now() > $date){
+        if( Carbon::now() > $date){
             return 0;
         }elseif($cont->remain_codes != 0 && Carbon::now() < $date){
             return 1;
