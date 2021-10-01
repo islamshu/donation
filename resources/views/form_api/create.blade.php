@@ -8,7 +8,7 @@
   direction: rtl;
 }
 
-input[type=text], select, textarea {
+:-ms-input-placeholder {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
