@@ -68,7 +68,7 @@ if (! function_exists('sendSmsOtp')) {
             function get_status( $cont)
             {
                 $date = $cont->date_to_drow;
-                if($cont->remain_codes == 0 &&  Carbon::now() > $date){
+                if(  Carbon::now() > $date){
                     return   '<span class="label l-bg-orange shadow-style">منتهية </span>';
                 }elseif($cont->remain_codes != 0 && Carbon::now() < $date){
                     return    '<span class="label  l-bg-purple  shadow-style">لم تنتهي بعد</span>';
