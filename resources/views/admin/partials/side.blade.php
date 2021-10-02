@@ -93,6 +93,13 @@
                   
                 </li>
                 <li>
+                    <a href="{{ route('prize.index') }}"  class="menu-toggle">
+                        <i data-feather="layout"></i>
+                        <span>طلبات الجوائز </span>
+                    </a>
+                  
+                </li>
+                <li>
                     <a href="#" onClick="return false;" class="menu-toggle">
                         <i data-feather="settings"></i>
                         <span>إعدادات التطبيق</span>

@@ -31,6 +31,10 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::get('admin/profile','AdminController@profile')->name('admin.show');
     Route::post('admin/profile','AdminController@store')->name('admin.update');
     Route::get('show_notify/{id}','UserController@show_notify')->name('show_notify');
+    Route::get('prize_reauests','PrizeRequestController@index')->name('prize.index');
+    Route::get('prize_reauests/{id}','PrizeRequestController@show')->name('prize_reauests.show');
+
+    
 
 
     Route::get('painduser','UserController@paindUser')->name('user.paned');
