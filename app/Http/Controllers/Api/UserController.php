@@ -12,6 +12,7 @@ use App\Http\Resources\FamousResourse;
 use App\Http\Resources\NotifcationCollection;
 use App\Http\Resources\UserResource;
 use App\IDFamous;
+use App\Mail\ForgitMail;
 use App\Mail\mailerification;
 use App\Mail\MailVerfication;
 use App\Notifications\NewUserNotification;
@@ -67,7 +68,7 @@ class UserController extends BaseController
             'title'=>'تم تسجيل مشهور جديد',
             'url'=>route('users.show',$user->id),
                    ];
-        event(new NewUser($data));
+          event(new NewUser($data));
         $details = [
             'user_id'=>$user->id,
             'title'=>'تم تسجيل مشهور جديد',
@@ -122,7 +123,7 @@ class UserController extends BaseController
             'title'=>'تم تسجيل مستخدم جديد',
             'url'=>route('users.show',$user->id),
                    ];
-        event(new NewUser($data));
+          event(new NewUser($data));
         $details = [
             'user_id'=>$user->id,
             'title'=>'تم تسجيل مستخدم جديد',
@@ -135,6 +136,10 @@ class UserController extends BaseController
     }  
     public function sendEmail($user){
         Mail::to($user->email)->send(new MailVerfication($user));
+        return $this->sendResponse('success',trans('success.Check_mail'));
+    }
+    public function sendForgetEmail($user){
+        Mail::to($user->email)->send(new ForgitMail($user));
         return $this->sendResponse('success',trans('success.Check_mail'));
     }
     public function verfiy_account(Request $request){
@@ -201,7 +206,7 @@ class UserController extends BaseController
         $user->otp = rand(1000,9999);
         $user->save();
         sendSmsOtp($user->phone,$user->otp);
-        return $this->sendEmail($user);
+        return $this->sendForgetEmail($user);
     }
     public function reset(Request $request){
         $user = User::where('otp',$request->otp)->first();

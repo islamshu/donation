@@ -41,7 +41,9 @@ return [
     'its not contest its activity'=>'هذه ليست مسابقة انما فعالية',
     'its not activity its contest'=>'هذه ليست فعالية انما مسابقة',
     'you are alerdy exists'=>'لقد قمت بالاشتراك بهذه الفعالية من قبل',
-    'you need to add code'=>'يجب ان تدخل كود للاشتراك بالمسابقة'
+    'you need to add code'=>'يجب ان تدخل كود للاشتراك بالمسابقة',
+    'you need to add Id for contest'=>'يجب ادخال المعرف االخاص بالمسابقة',
+    'you are not the winner in this contest !'=>'انت ليس الرابح بهذه المسابقة'
 
 
     

@@ -29,7 +29,10 @@ return [
     'content'=>'contest',
     'done subscribe'=>'Successfully subscribed',
     'all_contest'=>'All contest',
-    'all_actitviy'=>'All activity'
+    'rigster email'=>'Please activate your account',
+    'forgit email'=>'Rest your password',
+    'confirm account'=>'confirm account'
+
     
 
 

@@ -29,7 +29,12 @@ return [
     'content'=>'مسابقة',
     'done subscribe'=>'تم الأشتراك بنجاح',
     'all_contest'=>'جميع المسابقات',
-    'all_actitviy'=>'جميع الفعاليات'
+    'all_actitviy'=>'جميع الفعاليات',
+    'rigster email'=>'يرجى تفعيل حسابك',
+    'forgit email'=>'استرجاع كلمة المرور',
+    'confirm account'=>'موافقة على الحساب'
+
+
     
 
 

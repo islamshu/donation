@@ -18,6 +18,7 @@ use App\Http\Resources\UserResource;
 use App\Http\Traits\SendNotification;
 use App\Notifications\NotWinnerrNotification;
 use App\Notifications\WinnerNotification;
+use App\PrizeRequest;
 use App\SubActicity;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -341,6 +342,54 @@ class ContestController extends BaseController
         $contestCollection =new ActivityCollection($contest->get());
         return $this->sendResponse($contestCollection,trans('success.all_actitviy') );
         
+    }
+    public function send_reqest_prize(Request $request){
+        if($request->contest_id == null){
+            return $this->sendError(trans('error.you need to add Id for contest'));
+        }
+        $contest= Contest::find($request->contest_id);
+
+        if(!$contest){
+            return $this->sendError(trans('error.no Contest'));
+        }
+        if($contest->is_activity == 0){
+
+        
+        if($contest->winner_id == auth('api')->id()){
+            $prize = PrizeRequest::where('user_id',auth('api')->id())->where('contest_id',$request->contest_id)->first();
+            if($prize){
+                return $this->sendError(trans('error.You have already sent your request'));
+            }
+            $prize = new PrizeRequest();
+            $prize->user_id = auth('api')->id();
+            $prize->contest_id= $request->contest_id;
+            $prize->save();
+           return $this->sendResponse($prize,trans('success.send succefully') );
+        }
+    }else{
+        $conn = SubActicity::where('email',auth('api')->user()->email)->where('contest_id',$request->contest_id)->first();
+       if($conn){
+        if($contest->winner_id_activity == $conn->id){
+            $prize = PrizeRequest::where('user_id',auth('api')->id())->where('contest_id',$request->contest_id)->first();
+            if($prize){
+                return $this->sendError(trans('error.You have already sent your request'));
+            }
+            $prize = new PrizeRequest();
+            $prize->user_id = auth('api')->id();
+            $prize->contest_id= $request->contest_id;
+            $prize->save();
+           return $this->sendResponse($prize,trans('success.send succefully') );
+        }
+       }
+       return $this->sendError(trans('error.you are not the winner in this contest !'));
+
+       
+
+    }
+        return $this->sendError(trans('error.you are not the winner in this contest !'));
+
+
+
     }
     
 

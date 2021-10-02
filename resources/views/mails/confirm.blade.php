@@ -64,8 +64,8 @@
 									<tr>
 										<td class="sub-title" style="border-collapse: collapse;border: 0;margin: 0;padding: 0;padding-top:5px;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 18px;line-height: 29px;font-weight: bold;text-align: center;">
 										<div class="mktEditable" id="intro_title">
-											نشكرك على تسجيلك معنا في  {{ env('APP_NAME') }}    <br>
-											رمز التحقق الخاص بك هو : <strong style="color: #ff8300;">  {{ $otp }}</strong>
+											لقد تم الموافقة على حسابك 
+
 										</div></td>
 									</tr>
 									<tr>

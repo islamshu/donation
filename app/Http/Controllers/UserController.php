@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\AdditionalUser;
 use App\City;
+use App\Mail\Confremiation;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -49,6 +51,9 @@ class UserController extends Controller
         $user = User::find($request->id);
         $user->verify = $request->status;
         $user->save();
+        if($user->verify == 1){
+            Mail::to($user->email)->send(new Confremiation($user));
+        }
     }
     public function create()
     {
