@@ -338,7 +338,7 @@ class ContestController extends BaseController
         }elseif($request->status == 2){
             $contest->where('date_to_drow','<',Carbon::now());
         }
-        $contestCollection =new ContestCollection($contest->get());
+        $contestCollection =new ActivityCollection($contest->get());
         return $this->sendResponse($contestCollection,trans('success.all_actitviy') );
         
     }
