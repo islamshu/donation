@@ -13,6 +13,5 @@ class PrizeRequestController extends Controller
     }
     public function show($id){
         return view('admin.prize_request.show')->with('prize',Prize::find($id));
-  
     }
 }

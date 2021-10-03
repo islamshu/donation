@@ -17,7 +17,7 @@ class ActivityResourse extends JsonResource
             'total_codes' => $this->total_codes,
             'remain_codes' => $this->remain_codes,
             'is_visible'=>$this->is_visible,
-            'winner_name' => $this->winner($this->winner_id_activity),
+            'winner_name' => @$this->winner->name == null ? trans('error.no winner'):$this->winner->name,
             'prize'=>$this->prize,
             'user_name'=>$this->user->name,
             'user_id'=>$this->user->id,

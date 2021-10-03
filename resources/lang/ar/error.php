@@ -43,7 +43,10 @@ return [
     'you are alerdy exists'=>'لقد قمت بالاشتراك بهذه الفعالية من قبل',
     'you need to add code'=>'يجب ان تدخل كود للاشتراك بالمسابقة',
     'you need to add Id for contest'=>'يجب ادخال المعرف االخاص بالمسابقة',
-    'you are not the winner in this contest !'=>'انت ليس الرابح بهذه المسابقة'
+    'you are not the winner in this contest !'=>'انت ليس الرابح بهذه المسابقة',
+    'You must be in the vicinity of the event'=>'يجب ان تكون في محيط الفعالية',
+    'add you location'=>'يرجى ارسال احداثيات مكانك الحالي',
+
 
 
     

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Admin;
 use Illuminate\Http\Request;
 use Auth;
+
 class AdminController extends Controller
 {
     public function get_login()
@@ -21,22 +22,25 @@ class AdminController extends Controller
         }
         return redirect()->back()->with(['error' => 'هناك خطا بالبيانات']);
     }
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('get_login');
     }
-    public function profile(){
+    public function profile()
+    {
         $admin = Admin::first();
-        return view('admin.profile')->with('admin',$admin);
+        return view('admin.profile')->with('admin', $admin);
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $admin = Admin::first();
         $request_all =  $request->except(['password']);
-        if($request->password != null){
+        if ($request->password != null) {
             $request_all['password'] = bcrypt($request->password);
         }
         $admin->update($request_all);
 
-        return redirect()->back()->with(['success'=>'تم تعديل بنجاح']);
+        return redirect()->back()->with(['success' => 'تم تعديل بنجاح']);
     }
 }

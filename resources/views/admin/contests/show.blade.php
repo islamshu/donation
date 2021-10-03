@@ -86,7 +86,7 @@
                             <div class="card-block">
                                 <div class="text-center p-t-30 p-b-30  ">
                                     <h3>عدد المشتركين بالفعالية</h3>
-                                    <p class="m-0">{{ @$con->userCactitcity->count() }}</p>
+                                    <p class="m-0">{{ @$con->contentns->count() }}</p>
                                 </div>
                             </div>
                             <div  class="card-height-80"></div>
@@ -97,7 +97,7 @@
                             <div class="card-block">
                                 <div class="text-center p-t-30 p-b-30  ">
                                     <h3>الفائز</h3>
-                                    <p class="m-0"></p>
+                                    <p class="m-0">{{ @$con->winner->name == null ? trans('error.no winner'):$con->winner->name }}</p>
                                 </div>
                             </div>
                             <div class="card-height-80"></div>

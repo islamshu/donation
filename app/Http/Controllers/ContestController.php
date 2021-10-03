@@ -231,7 +231,9 @@ class ContestController extends Controller
                 return redirect()->route('contests.index')->with(['success'=>'تم التعديل بنجاح']);
 
             }else{
-                $activity = $contest->actitvity->delete();
+                if($contest->actitvity != null){
+                    $activity = $contest->actitvity->delete();
+                }
                 $contest->total_codes=$request->code;
                 $contest->remain_codes = $request->code;
                 $contest->save();

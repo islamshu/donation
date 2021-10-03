@@ -25,7 +25,7 @@ class ActivityCollection extends ResourceCollection
                     'total_codes' => $data->total_codes,
                     'remain_codes' => $data->remain_codes,
                     'is_visible'=>$data->is_visible,
-                    'winner_name' => $this->winner($data),
+                    'winner_name' => @$data->winner->name == null ? trans('error.no winner'):$data->winner->name,
                     'prize'=>$data->data,
                     'user_name'=>$data->user->name,
                     'user_id'=>$data->user->id,

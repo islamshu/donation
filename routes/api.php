@@ -62,6 +62,7 @@ Route::prefix('user')->group(function () {
     Route::get('get_contest_by_status','ContestController@get_contest_by_status')->name('api.get_contest_by_status');  
     Route::get('get_activity_by_status','ContestController@get_activity_by_status')->name('api.get_activity_by_status');  
     Route::post('send_reqest_prize','ContestController@send_reqest_prize')->name('api.send_reqest_prize');  
+    Route::post('sub_into_activity','ContestController@sub_into_activity')->name('api.sub_into_activity');  
 
     
 

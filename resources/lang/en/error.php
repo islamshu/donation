@@ -44,7 +44,10 @@ return [
     'you are alerdy exists'=>'you have already subscribed in this activity',
     'you need to add code'=>'you need to add code',
     'you need to add Id for contest'=>'you need to add Id for contest',
-    'you are not the winner in this contest !'=>'you are not the winner in this contest !'
+    'you are not the winner in this contest !'=>'you are not the winner in this contest !',
+    'You must be in the vicinity of the event'=>'You must be in the vicinity of the activity',
+    'add you location'=>'you need to add your location',
+
 
 
 

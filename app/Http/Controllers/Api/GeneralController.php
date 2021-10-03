@@ -13,16 +13,18 @@ use App\Page;
 
 class GeneralController extends BaseController
 {
-    public function get_all_cities(){
-        return   $this->sendResponse(City::get(),'all cities');
+    public function get_all_cities()
+    {
+        return   $this->sendResponse(City::get(), 'all cities');
     }
-    public function Genereal_info(){
+    public function Genereal_info()
+    {
         $info = new GenerealResourse(General::first());
-      return  $this->sendResponse($info,'general info');
+        return  $this->sendResponse($info, 'general info');
     }
-    public function Page($id){
+    public function Page($id)
+    {
         $info = new PageResourse(Page::find($id));
-        return  $this->sendResponse($info,'pageinfo');
+        return  $this->sendResponse($info, 'pageinfo');
     }
-
 }
