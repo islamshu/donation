@@ -466,6 +466,7 @@ class ContestController extends BaseController
     }
     public function edit(Request $request)
     {
+
         $contest = Contest::find($request->contest_id);
         if (!$contest) {
             return $this->sendError(trans('error.no Contest'));
@@ -486,63 +487,29 @@ class ContestController extends BaseController
         $show = $request->date_to_show . ' ' . $request->time_to_show;
 
         $drow = $request->date_to_drow . ' ' . $request->time_to_drow;
-        if (($show < $drow && Carbon::now() < $request->date_to_drow)) {
-
-            $contest->is_activity = $request->is_activity;
+        if (($show < $drow && Carbon::now() < $drow)) {
             $contest->date_to_show = $show;
             $contest->date_to_drow = $drow;
-            // $contest->time_to_show =  $request->time_to_show;
-            // $contest->time_to_drow= $request->time_to_drow;
+            $contest->total_codes = $request->total_codes;
+            $contest->remain_codes = $request->remain_codes;
+            $contest->save();
+           
 
-            // $contest->code = generateNumber();
-
-
-            if ((int)$request->is_activity == 1) {
-                $contest->total_codes = -1;
-                $contest->remain_codes = -1;
-                $contest->save();
+            if ((int)$contest->is_activity == 1) {
+             
                 $activity = $contest->actitvity;
-                if ($activity == null) {
-                    $activity = new Activity();
-                }
-                if ($request->lat == null || $request->long == null) {
-                    return $this->sendError(trans('error.you need to add lat and long to location'));
-                }
-                $activity->user_id = auth('api')->id();
                 $activity->lat = $request->lat;
                 $activity->long = $request->long;
-                $contest->update(['code' => null]);
-                if ($activity->qr_code == null) {
-                    $image = QrCode::format('png')
-                        ->size(200)->errorCorrection('H')
-                        ->generate(route('api.create_user_activiry', $contest->id));
-                    $output_file =  time() . '.png';
-                    $file =  Storage::disk('local')->put($output_file, $image);
-                    $activity->qr_code = $output_file;
-                }
-
-                $activity->constant_id = $contest->id;
-                $contest->update(['is_activity' => 1]);
                 $activity->save();
+               
+
+                
                 $activityResourse = new ActivityResourse(Contest::find($contest->id));
                 return $this->sendResponse($activityResourse, trans('success.register true'));
-            } else {
-                if ($contest->actitvity != null) {
-                    $activity = $contest->actitvity->delete();
-                }
-                if ($request->total_codes == null) {
-                    return $this->sendError(trans('error.you need to add number of cods'));
-                }
-                $contest->total_codes = $request->total_codes;
-                $contest->remain_codes = $request->total_codes;
-                if ($contest->code == null) {
-                    $contest->code = generateNumber();
-                }
-
-                $contest->save();
+            }
                 $contestCollection = new ContestResource(Contest::find($contest->id));
                 return $this->sendResponse($contestCollection, trans('success.register true'));
-            }
+          
         }
         return $this->sendError(trans('error.date'));
     }
