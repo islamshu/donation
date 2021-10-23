@@ -35,9 +35,7 @@
                         <i class="far fa-bell"></i>
                         <span class="notif-count"  data-count="{{ $count }}">{{ $count }}</span>
                     </a>
-                    <ul class="dropdown-menu pullDown" style="
-                    height: auto;
-                " >
+                    <ul class="dropdown-menu pullDown" style="height: auto;" >
                         <li class="header">الاشعارات</li>
                         <li class="body" style="width: 100%">
 

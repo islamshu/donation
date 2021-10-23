@@ -21,7 +21,6 @@ class WinnerNotification extends Notification
     public function __construct($details)
     {
         $this->details = $details;
-
     }
 
     /**
