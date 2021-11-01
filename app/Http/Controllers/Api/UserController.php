@@ -186,7 +186,7 @@ class UserController extends BaseController
             $tokenResult->token->expires_at
         )->toDateTimeString();
         $success['user'] = $user;
-        return $this->sendResponse('success', $success);
+        return $this->sendResponse($success,'success');
     }
     public function logout()
     {
@@ -274,8 +274,16 @@ class UserController extends BaseController
         $info->instagram = $request->instagram;
         $info->tiktok = $request->tiktok;
         $info->pio = $request->pio;
+      
+        
 
         $info->save();
+        $user = auth('api')->user();
+        $user->name = $request->name;
+        if ($request->image != null) {
+            $user->image = $request->image->store('user');
+        }
+        $user->save();
         $userResoures = new FamousResourse(auth('api')->user());
         return $this->sendResponse($userResoures, trans('success.edit porfile'));
     }
@@ -290,7 +298,10 @@ class UserController extends BaseController
         if ($validation->fails()) {
             return $this->sendError($validation->messages()->all());
         }
-        $user->name = $request->name;
+        if($user->type != 'famous'){
+          $user->name = $request->name;
+        }
+       
         $user->gender = $request->gender;
         $user->address_id = $request->address_id;
         if ($request->image != null) {
