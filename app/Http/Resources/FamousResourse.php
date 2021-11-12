@@ -24,7 +24,7 @@ class FamousResourse extends JsonResource
             'address'=>$this->address,
 
             'verify'=>$this->verify,
-            'additanl'=>new MoreInfoResourse($this->moreInfo),
+             'additanl'=>new MoreInfoResourse($this->moreInfo),
         ];  
     }
 }

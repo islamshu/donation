@@ -30,7 +30,7 @@ class ContestCollection extends ResourceCollection
                     'prize'=>$data->prize,
                     'user_id'=>$data->user->id, 
                     'user_name'=>$data->user->name,
-                    'user_more_info'=>new MoreInfoResourse($data->user->moreInfo),
+                      'user_more_info'=>new MoreInfoResourse($data->user->moreInfo),
 
                     'date_to_drow'=> Carbon::parse( @$data->date_to_drow)->format('d-m-Y h:m'),
                     'date_to_show'=>Carbon::parse( @$data->date_to_show)->format('d-m-Y h:m'),
