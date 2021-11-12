@@ -29,6 +29,7 @@ class ActivityCollection extends ResourceCollection
                     'prize'=>$data->data,
                     'user_name'=>$data->user->name,
                     'user_id'=>$data->user->id,
+                    'user_more_info'=>new MoreInfoResourse($data->user->moreInfo),
                   
                     'date_to_drow'=> Carbon::parse( @$data->date_to_drow)->format('d-m-Y h:m'),
                     'date_to_show'=>Carbon::parse( @$data->date_to_show)->format('d-m-Y h:m'),

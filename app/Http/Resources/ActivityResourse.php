@@ -21,6 +21,8 @@ class ActivityResourse extends JsonResource
             'prize'=>$this->prize,
             'user_name'=>$this->user->name,
             'user_id'=>$this->user->id,
+            'user_more_info'=>new MoreInfoResourse($this->user->moreInfo),
+
           
             'date_to_drow'=> Carbon::parse( @$this->date_to_drow)->format('d-m-Y h:m'),
             'date_to_show'=>Carbon::parse( @$this->date_to_show)->format('d-m-Y h:m'),
