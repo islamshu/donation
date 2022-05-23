@@ -35,7 +35,7 @@
     <div class="page-loader-wrapper">
         <div class="loader">
          
-            <p>يرجى الانتظار ... </p>
+            <p>@lang('Please waiting.') ... </p>
         </div>
     </div>
     <!-- #END# Page Loader -->
