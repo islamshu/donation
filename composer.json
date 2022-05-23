@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "pusher/pusher-php-server": "~4.0",
-        "simplesoftwareio/simple-qrcode": "^1.0.3"
+        "simplesoftwareio/simple-qrcode": "^1.0.3",
+        "stripe/stripe-php": "^8.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

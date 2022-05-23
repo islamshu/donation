@@ -23,9 +23,15 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::resource('users','UserController' );
     Route::resource('pages','PageController' );
     Route::resource('contests','ContestController');
+    Route::resource('sliders','SliderController');
+    Route::resource('news','NewsController');
+    Route::get('about','AboutController@index')->name('about.index');
+    Route::post('about','AboutController@store')->name('about.store');
+    Route::get('homepage','HomeController@indexpage')->name('home.index');
+    Route::post('homepage','HomeController@storepage')->name('home.store');
+    Route::resource('gallery','GallaryController');
     Route::get('panUser/{id}','UserController@panUser')->name('user.pan');
     Route::get('unpanUser/{id}','UserController@unpanUser')->name('user.unpan');
-
     Route::get('only-contests','ContestController@contests')->name('only-contests');
     Route::get('only-activites','ContestController@activites')->name('only-activites');
     Route::get('admin/profile','AdminController@profile')->name('admin.show');
@@ -50,7 +56,8 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::get('get_pusher_setting','GeneralController@get_pusher_setting' )->name('get_pusher_setting');
 
     Route::post('env_key_update','GeneralController@env_key_update' )->name('env_key_update.update');
-
+    Route::get('language_translate','GeneralController@show_translate')->name('show_translate');
+    Route::post('/languages/key_value_store', 'GeneralController@key_value_store')->name('languages.key_value_store');
 
     
 
@@ -69,6 +76,21 @@ Route::group(['prefix' => 'dashbaord'], function() {
 });
 
 
+Route::get('/login_admin', 'HomeController@login');
 Route::get('/', 'HomeController@index');
+Route::get('/about_us', 'HomeController@about_us');
+Route::get('/news', 'HomeController@news');
+Route::get('/gallery','HomeController@gallery');
+Route::get('contact','HomeController@contact');
+Route::get('/gallery_single/{id}','HomeController@gallery_single')->name('gallery_single');
+
+
+
+
+
+Route::get('/news/{id}', 'HomeController@new')->name('single_new');
+
 Route::get('create_user_activiry/{id}','Api\ContestController@create_user_activiry')->name('api.create_user_activiry');  
 Route::post('subscribe_actitvty','Api\ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
+Route::get('stripe', 'StripePaymentController@stripe')->name('stripe.get');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');

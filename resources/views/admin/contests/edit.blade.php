@@ -16,7 +16,7 @@
                
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-home"></i> الرئيسية</a>
+                            <i class="fas fa-home"></i> @lang('Home')</a>
                     </li>
                     <li class="breadcrumb-item active">المسابقات</li>
 
@@ -190,7 +190,7 @@
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
                                             </div>
                                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <input  type="submit"  value="حفظ" class="filled-in btn btn-info">
+                                                <input  type="submit" value="{{ __('save') }}"  class="filled-in btn btn-info">
                                             </div>
                                         </div>
                                     </form>

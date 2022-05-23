@@ -8,7 +8,7 @@
                
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-home"></i> الرئيسية</a>
+                            <i class="fas fa-home"></i> @lang('Home')</a>
                     </li>
                     <li class="breadcrumb-item active">الفروع</li>
 
@@ -46,7 +46,7 @@
                                                         
                                                       
                                                         <br>
-                                                        <input class="btn btn-primary m-t-15 waves-effect" type="submit" value="حفظ">
+                                                        <input class="btn btn-primary m-t-15 waves-effect" type="submit"value="{{ __('save') }}" >
                                                         
                                                     </form>
                                                 </div>

@@ -17,110 +17,56 @@
                 <li>
                     <a href="{{ route('admin.dashboard') }}">
                         <i data-feather="monitor"></i>
-                        <span>الرئيسية</span>
+                        <span>{{ __('Dashboard') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                        <i data-feather="user"></i>
-                        <span>المستخدمين</span>
+                    <a href="{{ route('genereal.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('Setting') }}</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{ route('users.index') }}">جميع المستخدمين</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('users.famous') }}"> المشاهير </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('users.user') }}"> عموم المستخدين </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('user.paned') }}">  المستخدمين المحظورين </a>
-                        </li>
-                        
-                        
-                    </ul>
                 </li>
                 <li>
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                        <i data-feather="star"></i>
-                        <span>المسابقات</span>
+                    <a href="{{ route('sliders.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('sliders') }}</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{ route('contests.index') }}">رؤية الجميع </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('only-contests') }}"> جميع المسابقات </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('only-activites') }}"> جميع الفعاليات  </a>
-                        </li>
-                        
-                        
-                        
-                    </ul>
                 </li>
                 <li>
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                        <i data-feather="map-pin"></i>
-                        <span>المدن</span>
+                    <a href="{{ route('home.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('Home Page') }}</span>
                     </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{ route('city.index') }}">جميع المدن</a>
-                        </li>
-                    
-                        <li>
-                            <a href="{{ route('city.create') }}"> اضف مدينة جديدة  </a>
-                        </li>
-                        
-                    </ul>
+                </li>
+                
+                <li>
+                    <a href="{{ route('about.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('About Page') }}</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('genereal.index') }}"  class="menu-toggle">
-                        <i data-feather="command"></i>
-                        <span>البيانات العاملة</span>
+                    <a href="{{ route('news.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('News') }}</span>
                     </a>
-                  
                 </li>
                 <li>
-                    <a href="{{ route('pages.index') }}"  class="menu-toggle">
-                        <i data-feather="layout"></i>
-                        <span>الصفحات </span>
+                    <a href="{{ route('gallery.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('Gallery') }}</span>
                     </a>
-                  
                 </li>
+  
                 <li>
-                    <a href="{{ route('prize.index') }}"  class="menu-toggle">
-                        <i data-feather="layout"></i>
-                        <span>طلبات الجوائز </span>
+                    <a href="{{ route('show_translate') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('language') }}</span>
                     </a>
-                  
                 </li>
-                <li>
-                    <a href="#" onClick="return false;" class="menu-toggle">
-                        <i data-feather="settings"></i>
-                        <span>إعدادات التطبيق</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{ route('get_mail_setting') }}">إعدادات البريد الإلكتروني </a>
-                        </li>
-                    
-                        <li>
-                            <a href="{{ route('get_nexmo_setting') }}"> إعدادات بوابة sms    </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('get_firebase_setting') }}">  إعدادت firebase     </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('get_pusher_setting') }}">  إعدادت pusher     </a>
-                        </li>
-                        
-                    </ul>
-                </li>
+  
+  
+             
                
                
              
@@ -130,7 +76,7 @@
     </aside>
     <!-- #END# Left Sidebar -->
     <!-- Right Sidebar -->
-    <aside id="rightsidebar" class="right-sidebar">
+    {{-- <aside id="rightsidebar" class="right-sidebar">
         <ul class="nav nav-tabs tab-nav-right" role="tablist">
             <li role="presentation">
                 <a href="#skins" data-bs-toggle="tab" class="active">SKINS</a>
@@ -305,6 +251,6 @@
                 </div>
             </div>
         </div>
-    </aside>
+    </aside> --}}
     <!-- #END# Right Sidebar -->
 </div>

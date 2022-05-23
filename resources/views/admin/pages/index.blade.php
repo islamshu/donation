@@ -8,7 +8,7 @@
                
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-home"></i> الرئيسية</a>
+                            <i class="fas fa-home"></i> @lang('Home')</a>
                     </li>
                     <li class="breadcrumb-item active">الصفحات</li>
 
@@ -34,7 +34,7 @@
                                     <th># </th>
                                     <th>اسم الصفحة  </th>
 
-                                    <th>الإجرائات</th>
+                                    <th>Action</th>
                                    
                                 </tr>
                             </thead>
@@ -67,7 +67,7 @@
                                     <th># </th>
                                     <th>اسم الصفحة  </th>
 
-                                    <th>الإجرائات</th>
+                                    <th>Action</th>
                                    
                                    
                                 </tr>

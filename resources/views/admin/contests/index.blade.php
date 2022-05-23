@@ -15,7 +15,7 @@
                
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-home"></i> الرئيسية</a>
+                            <i class="fas fa-home"></i> @lang('Home')</a>
                     </li>
                     <li class="breadcrumb-item active">المسابقات</li>
 
@@ -81,7 +81,7 @@
                                     <th>حالة المسابقة </th>
 
 
-                                    <th>الإجرائات</th>
+                                    <th>Action</th>
                                    
                                 </tr>
                             </thead>
@@ -127,7 +127,7 @@
                                     <th>حالة المسابقة </th>
 
 
-                                    <th>الإجرائات</th>
+                                    <th>Action</th>
                                    
                                    
                                 </tr>

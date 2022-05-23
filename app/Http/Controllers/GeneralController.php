@@ -14,9 +14,12 @@ class GeneralController extends Controller
     }
     public function update(Request $request){
         $general = General::first();
-        $request_all = $request->except(['logo']);
+        $request_all = $request->except(['logo','big_logo']);
         if($request->logo != null){
             $request_all['logo'] = $request->logo->store('logo');
+        }
+        if($request->big_logo != null){
+            $request_all['big_logo'] = $request->big_logo->store('big_logo');
         }
         $general->update($request_all);
         return redirect()->back()->with(['success'=>'تم التعديل بنجاح']);
@@ -46,6 +49,22 @@ class GeneralController extends Controller
 
         return redirect()->back()->with(['success'=>'تم التعديل بنجاح']);
 
+    }
+    public function show_translate()
+    {
+        $language = 'en';
+
+        return view('admin.language_view_en', compact('language'));
+    }
+ 
+    public function key_value_store(Request $request)
+    {
+        $data = openJSONFile($request->id);
+        foreach ($request->key as $key => $key) {
+            $data[$key] = $request->key[$key];
+        }
+        saveJSONFile($request->id, $data);
+        return back();
     }
     
 }

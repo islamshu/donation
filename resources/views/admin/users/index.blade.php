@@ -11,7 +11,7 @@
                
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-home"></i> الرئيسية</a>
+                            <i class="fas fa-home"></i> @lang('Home')</a>
                     </li>
                     @if( !Route::is('user.paned'))
 
@@ -52,7 +52,7 @@
                                     <th>اثبات الحساب</th>
                                     @endif
                                     {{-- <th>الدور</th> --}}
-                                    <th>الإجرائات</th>
+                                    <th>Action</th>
                                    
                                 </tr>
                             </thead>
@@ -118,7 +118,7 @@
                                     @if(Route::is('users.famous'))
                                     <th>اثبات الحساب</th>
                                     @endif
-                                    <th>الإجرائات</th>
+                                    <th>Action</th>
                                    
                                 </tr>
                             </tfoot>

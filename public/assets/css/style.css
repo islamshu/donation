@@ -1,4 +1,8 @@
 @charset "UTF-8";
+. * {
+    direction: ltr !important;
+}
+
 .m-l--125 {
     margin-left: -125px
 }

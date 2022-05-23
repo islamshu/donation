@@ -6,7 +6,7 @@
             <a href="#" onClick="return false;" class="bars"></a>
             <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                 {{-- <img src="https://madares-abqary.com/uploads/site_logo/7KlIYLEG6UbFTU8N08bl2UR0uwhliCilmAbT9IB9.png" alt="" /> --}}
-                <span class="logo-name">Prize</span>
+                <span class="logo-name">{{ App\General::first()->name_en }}</span>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -24,7 +24,7 @@
                         <i class="fas fa-expand"></i>
                     </a>
                 </li>
-                <li class="dropdown dropdown-notifications">
+                {{-- <li class="dropdown dropdown-notifications">
                     @php
                         $notifications = auth()->user()->unreadNotifications;
                         $count = auth()->user()->unreadNotifications->count();
@@ -68,7 +68,7 @@
                         </li>
                        
                     </ul>
-                </li>
+                </li> --}}
                 <!-- #END# Full Screen Button -->
                 <!-- #START# Notifications-->
                 
@@ -97,12 +97,12 @@
                               
                                 <li>
                                     <a href="{{ route('admin.show') }}">
-                                        <i class="material-icons">settings</i>الملف الشخصي 
+                                        <i class="material-icons">settings</i>@lang('profile') 
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.logout') }}">
-                                        <i class="material-icons">power_settings_new</i>تسجيل خروج
+                                        <i class="material-icons">power_settings_new</i>@lang('logout') 
                                     </a>
                                 </li>
                             </ul>

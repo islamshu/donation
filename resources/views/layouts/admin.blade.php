@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title> {{ App\General::first()->name_ar }}</title>
+    <title> {{ App\General::first()->name_en }}</title>
     <!-- Favicon-->
     <link rel="icon" href="{{ asset('uploads/'. App\General::first()->logo) }}" type="image/x-icon">
     <!-- Plugins Core Css -->
