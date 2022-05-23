@@ -104,11 +104,8 @@
                                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        @php
-                                                            $show = str_replace(' ','T',@$con->date_to_show);
-                                                            $drow = str_replace(' ','T',@$con->date_to_drow);
-                                                        @endphp
-                                                        <input required type="datetime-local" value="{{ $show  }}" name="date_to_show" id="date_to_show" class="form-control"
+
+                                                        <input required type="datetime" value="{{ $con->date_to_show}}" name="date_to_show" id="date_to_show" class="form-control"
                                                             placeholder="عدد المتسابقين">
                                                     </div>
                                                 </div>
@@ -121,7 +118,7 @@
                                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input required type="datetime-local" value="{{ $drow  }}" name="date_to_drow" id="date_to_drow" class="form-control"
+                                                        <input required type="datetime" value="{{ $con->date_to_drow }}" name="date_to_drow" id="date_to_drow" class="form-control"
                                                             placeholder=" تاريخ عرض المسابقة">
                                                     </div>
                                                 </div>

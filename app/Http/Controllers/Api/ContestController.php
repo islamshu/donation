@@ -121,8 +121,14 @@ class ContestController extends BaseController
         $theta = $lon1 - $lon2;
         $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
         $dist = acos($dist);
+        $dist = rad2deg($dist); 
+        $miles = $dist * 60 * 1.1515;
+
+        $final_dest = $miles * 1.609344;
+         
+        
  
-        if($dist < 1){
+        if($final_dest < 1){
             return $this->sendError(trans('error.You must be in the vicinity of the event'));
         }
         $conn = new Contestant();
@@ -169,7 +175,6 @@ class ContestController extends BaseController
                         $contest->save();
                     }
                     if ($sub->save()) {
-                        $contest->decrement('remain_codes', 1);
                         $success = 'success';
                         return $this->sendResponse($success, trans('succuess.done subscribe'));
                     } else {

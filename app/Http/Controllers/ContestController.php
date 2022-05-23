@@ -194,7 +194,7 @@ class ContestController extends Controller
             $contest->date_to_drow = $drow;
       
 
-            $contest->code = generateNumber();
+            // $contest->code = generateNumber();
 
           
             if($request->is_activity == 1){
@@ -223,7 +223,7 @@ class ContestController extends Controller
                     $file =  Storage::disk('local')->put($output_file, $image); 
                     $activity->qr_code =$output_file;
                 }
-
+                
        
                 $activity->constant_id = $contest->id;
                 $contest->update(['is_activity'=>1]);
