@@ -27,16 +27,16 @@
 						<img alt="" src="{{ asset('assets/images/loading.png') }}">
 					</span>
 					<span class="login100-form-title p-b-34 p-t-27">
-						تسجيل الدخول
+						{{ __('login') }}
 					</span>
 					@include('admin.partials._error')
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input100" type="text" name="useremail" placeholder="البريد الاكتروني">
+						<input class="input100" type="text" name="useremail" placeholder="{{ __('E-mail') }}">
 						<i class="material-icons focus-input1001">person</i>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="userpass" placeholder="كلمة المرور">
+						<input class="input100" type="password" name="userpass" placeholder="{{ __('password') }}">
 						<i class="material-icons focus-input1001">lock</i>
 					</div>
 				

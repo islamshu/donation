@@ -51,6 +51,9 @@
     "Added successfully": "Added successfully",
     "Deleted successfully": "Deleted successfully",
     "Edit successfully": "Edit successfully",
-    "Payment successful!": "Payment successful!"
+    "Payment successful!": "Payment successful!",
+    "login": "login",
+    "password": "password"
+
 
 }
