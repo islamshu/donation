@@ -45,6 +45,12 @@
                             <p>{{ Session::get('success') }}</p>
                         </div>
                     @endif
+                    @if (Session::has('error'))
+                    <div class="alert alert-danger text-center">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <p>{{ Session::get('error') }}</p>
+                    </div>
+                @endif
   
                     <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
                                                      data-cc-on-file="false"

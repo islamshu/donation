@@ -43,7 +43,8 @@
 				
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							تسجيل الدخول
+							<?php echo e(__('login')); ?>
+
 						</button>
 					</div>
 				

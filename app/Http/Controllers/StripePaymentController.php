@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Donation;
+use Exception;
 use Illuminate\Http\Request;
 use Session;
 use Stripe;
@@ -28,6 +29,7 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
+        try {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" =>  session('amount') * 100,
@@ -42,5 +44,8 @@ class StripePaymentController extends Controller
         Session::flash('success',trans('Payment successful!'));
           
         return back();
+    } catch (Exception $e) {
+        Session::flash('error',trans('Payment Error Ocerr!'));
+      }
     }
 }
