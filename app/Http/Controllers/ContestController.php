@@ -228,7 +228,7 @@ class ContestController extends Controller
                 $activity->constant_id = $contest->id;
                 $contest->update(['is_activity'=>1]);
                 $activity->save();
-                return redirect()->route('contests.index')->with(['success'=>'تم التعديل بنجاح']);
+                return redirect()->route('contests.index')->with(['success'=> trans('Edit successfully')]);
 
             }else{
                 if($contest->actitvity != null){
@@ -241,7 +241,7 @@ class ContestController extends Controller
 
             
             
-            return redirect()->route('contests.index')->with(['success'=>'تم التعديل بنجاح']);
+            return redirect()->route('contests.index')->with(['success'=> trans('Edit successfully')]);
 
         }
         return redirect()->back()->with(['error'=>'يوجد خطأ في توايخ المسابقة'])->withInput($request->all());
@@ -256,7 +256,7 @@ class ContestController extends Controller
     public function destroy($id)
     {
         Contest::find($id)->delete();
-        return redirect()->route('contests.index')->with(['success'=>'تم الحذف بنجاح']);
+        return redirect()->route('contests.index')->with(['success'=> trans('Deleted successfully')]);
 
     }
 }

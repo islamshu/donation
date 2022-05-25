@@ -46,7 +46,7 @@ class GallaryController extends Controller
         $gals->images = json_encode($array);
         $gals->save();
 
-        return redirect()->route('gallery.index')->with(['success' => 'تم الاضافة بنجاح']);
+        return redirect()->route('gallery.index')->with(['success' =>trans('Added successfully')]);
     }
 
 
@@ -83,7 +83,7 @@ class GallaryController extends Controller
         }
         $gals->images = json_encode($array);
         $gals->save();
-        return redirect()->route('gallery.index')->with(['success' => 'تم التعديل بنجاح']);
+        return redirect()->route('gallery.index')->with(['success' => trans('Edit successfully')]);
     }
 
     /**
@@ -96,6 +96,6 @@ class GallaryController extends Controller
     {
         $gals = Gallary::find($id);
         $gals->delete();
-        return redirect()->route('gallery.index')->with(['success' => 'تم الحذف بنجاح']);
+        return redirect()->route('gallery.index')->with(['success' => trans('Deleted successfully')]);
     }
 }

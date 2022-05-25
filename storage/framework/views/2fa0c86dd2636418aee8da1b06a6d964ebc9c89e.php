@@ -44,11 +44,7 @@
 
 
     <div class="cat-children">
-        <h3>
-            Subcategories</h3>
 
-        <ul>
-        </ul>
     </div>
     <div class="pagination">
     <?php echo e($news->links()); ?>

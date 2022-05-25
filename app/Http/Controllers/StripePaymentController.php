@@ -39,7 +39,7 @@ class StripePaymentController extends Controller
         $do->donation = session('amount');
         $do->save();
   
-        Session::flash('success', 'Payment successful!');
+        Session::flash('success',trans('Payment successful!'));
           
         return back();
     }

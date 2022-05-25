@@ -21,7 +21,7 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->body = $request->body;
         $news->save();
-        return redirect()->route('news.index')->with(['success'=>'تم الاضافة بنجاح']);
+        return redirect()->route('news.index')->with(['success'=> trans('Added successfully')]);
     }
     public function edit($id)
     {
@@ -33,12 +33,12 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->body = $request->body;
         $news->save();
-        return redirect()->route('news.index')->with(['success'=>'تم التعديل بنجاح']);
+        return redirect()->route('news.index')->with(['success'=> trans('Edit successfully')]);
     }
      public function destroy($id)
     {
         $slider =News::find($id);
         $slider->delete();
-        return redirect()->back()->with(['success'=>'تم الحذف بنجاح']);
+        return redirect()->back()->with(['success'=> trans('Deleted successfully')]);
     }
 }

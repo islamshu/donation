@@ -68,7 +68,7 @@ class CityController extends Controller
     public function update(Request $request, City $city)
     {
         $city->update($request->all());
-        return redirect()->route('city.index')->with(['success'=>'تم التعديل بنجاح']);
+        return redirect()->route('city.index')->with(['success'=> trans('Edit successfully')]);
     }
 
     /**
@@ -80,7 +80,7 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         $city->delete();
-        return redirect()->route('city.index')->with(['success'=>'تم الحذف بنجاح']);
+        return redirect()->route('city.index')->with(['success'=> trans('Deleted successfully')]);
 
     }
 }

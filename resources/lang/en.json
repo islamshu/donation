@@ -47,5 +47,10 @@
     "save": "Save",
     "sliders": "sliders",
     "title": "title",
-    "Please waiting": "Please waiting"
+    "Please waiting": "Please waiting",
+    "Added successfully": "Added successfully",
+    "Deleted successfully": "Deleted successfully",
+    "Edit successfully": "Edit successfully",
+    "Payment successful!": "Payment successful!"
+
 }

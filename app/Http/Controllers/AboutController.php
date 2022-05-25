@@ -20,6 +20,6 @@ class AboutController extends Controller
         }
         $about->body = $request->body;
         $about->save();
-        return redirect()->back()->with(['success'=>'تم الاضافة بنجاح']);
+        return redirect()->back()->with(['success'=> trans('Added successfully')]);
         }
 }

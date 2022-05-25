@@ -16,12 +16,14 @@ class SliderController extends Controller
         $slider =new Slider();
         $slider->image = $request->image->store('slider');
         $slider->save();
-        return redirect()->back()->with(['success'=>'تم الاضافة بنجاح']);
+        return redirect()->back()->with(['success'=> trans('Added successfully')]);
+       
+       
     }
      public function destroy($id)
     {
         $slider =Slider::find($id);
         $slider->delete();
-        return redirect()->back()->with(['success'=>'تم الحذف بنجاح']);
+        return redirect()->back()->with(['success'=> trans('Deleted successfully')]);
     }
 }

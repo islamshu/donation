@@ -22,7 +22,7 @@ class GeneralController extends Controller
             $request_all['big_logo'] = $request->big_logo->store('big_logo');
         }
         $general->update($request_all);
-        return redirect()->back()->with(['success'=>'تم التعديل بنجاح']);
+        return redirect()->back()->with(['success'=> trans('Edit successfully')]);
     }
     public function get_mail_setting(){
         return view('admin.setting.mail');
@@ -47,7 +47,7 @@ class GeneralController extends Controller
      
      
 
-        return redirect()->back()->with(['success'=>'تم التعديل بنجاح']);
+        return redirect()->back()->with(['success'=> trans('Edit successfully')]);
 
     }
     public function show_translate()

@@ -53,6 +53,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style type="text/css">
+    body{
+        background: #fff url(https://www.elcato.org/sites/default/files/images/stories/gettyimages-1060748862.jpg) center top no-repeat !important;
+        color: black !important;
+    }
+    .gkMain {
+        color: #000 !important;
+    }
+    .gkIsSlide{
+        width: 100%;
+        height: 100%;
+    }
         #gkLeft {
             width: 23%;
         }
@@ -95,6 +106,33 @@
         #gkuseruser1 {
             width: 100%;
         }
+        .box > h3, .box_text > h3, .box_menu > h3 {
+    background: transparent url(https://res.cloudinary.com/practicaldev/image/fetch/s--BuPz-p40--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png) repeat-x 0 0;
+    color: #fff;
+    }
+    #wrapperContent2 {
+    background: #50aaaa  !important;
+    border: 1px solid #e0dfd5 !important;
+    padding: 11px 11px 0 !important;
+    /* color: red !important; */
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: black;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #000;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
 
     </style>
     <script src="https://dahersaleh.com/media/system/js/mootools-core.js" type="text/javascript"></script>
@@ -109,30 +147,7 @@
     </script>
     <script src="https://dahersaleh.com/modules/mod_image_show_gk4/styles/gk_black_and_white/engine.js"
         type="text/javascript"></script>
-    <script type="text/javascript">
-        window.addEvent('load', function() {
-            new JCaption('img.caption');
-        });
-        $GKMenu = {
-            height: true,
-            width: true,
-            duration: 250
-        };
-        $GK_TMPL_URL = "templates/gk_black_and_white";
-        try {
-            $Gavick;
-        } catch (e) {
-            $Gavick = {};
-        };
-        $Gavick["gkIs-gk-is-156"] = {
-            "anim_speed": 900,
-            "anim_interval": 2000,
-            "autoanim": 1,
-            "anim_type": "opacity",
-            "slide_links": 0,
-            "stripe_width": 60
-        };
-    </script>
+  
 
 
 
@@ -179,7 +194,7 @@
 
 
                     <div class="custom">
-                        <p style="margin-top: 10px; text-align: center; font-size: 16px; line-height: 18px; color: #137ac9;"><br /><br /><br /><br /><br /><br /><br /><br /><br /><?php echo app('translator')->get('President'); ?><br /><strong><?php echo e(App\General::first()->President); ?></strong></p>
+                        <p style="margin-top: 10px; text-align: center; font-size: 16px; line-height: 18px; color: black;"><br /><br /><br /><br /><br /><br /><br /><br /><br /><?php echo app('translator')->get('President'); ?><br /><strong><?php echo e(App\General::first()->President); ?></strong></p>
                     </div>
                 </div>
             </div>
@@ -364,7 +379,7 @@
                             <div id="gkLeftMiddle" class="gkMain oneCol gkPaddingTBL">
                                 <div id="gkLeftLeft" class="gkMain gkCol gkPaddingTBL">
                                     <div class="box">
-                                        <h3 class="header"><span><?php echo app('translator')->get('Menu'); ?></span></h3>
+                                        <h3 class="header" style="color: rgb(255, 255, 255) !important"><span><?php echo app('translator')->get('Menu'); ?></span></h3>
                                         <div class="content">
                                             <ul class="menu">
                                                 <li class="item-234 current active"><a
