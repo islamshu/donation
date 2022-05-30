@@ -127,16 +127,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
     background: transparent;
 }
-div {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    color: #000;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-}
+
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
@@ -393,20 +384,20 @@ div {
                                         <h3 class="header" style="color: rgb(255, 255, 255) !important"><span>@lang('Menu')</span></h3>
                                         <div class="content">
                                             <ul class="menu">
-                                                <li class="item-234 current active"><a
+                                                <li class="item-234 current active"><a style="color: #000 !important"
                                                         href="/">@lang('home')</a></li>
-                                                <li class="item-233"><a
+                                                <li class="item-233"><a style="color: #000 !important"
                                                         href="/about_us">@lang('About us')</a></li>
-                                                <li class="item-252"><a
+                                                <li class="item-252"><a style="color: #000 !important"
                                                         href="/news">@lang('News')</a>
                                                 </li>
-                                                <li class="item-253"><a
+                                                <li class="item-253"><a style="color: #000 !important"
                                                         href="/gallery">@lang('Gallery')</a>
                                                 </li>
                
-                                                <li class="item-254"><a
+                                                <li class="item-254"><a style="color: #000 !important"
                                                         href="/contact">@lang('Contact us')</a></li>
-                                                <li class="item-255"><a
+                                                <li class="item-255"><a style="color: #000 !important"
                                                     data-toggle="modal" data-target="#myModal">@lang('Make a donation')</a></li>
                                             </ul>
                                         </div>
