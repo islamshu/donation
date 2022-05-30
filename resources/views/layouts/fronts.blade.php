@@ -567,10 +567,10 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
           <div class="modal-content" style="height: 250px;">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">@lang('Donation Detals')</h4>
+              <h4 class="modal-title" style="color: black">@lang('Donation Detals')</h4>
             </div>
             <div class="modal-body">
-              <p>@lang('Amount to be donated')</p>
+              <p style="color: black">@lang('Amount to be donated')</p>
                 <form action="{{ route('stripe.get') }}" method="get">
                     <div class="form-group">
                       <input type="number" class="form-control" id="exampleInputEmail1" name="amount" aria-describedby="emailHelp" placeholder="{{ __('amount') }}">
