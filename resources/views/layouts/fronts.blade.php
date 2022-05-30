@@ -502,8 +502,8 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
                                                                     <a style="color: black" href="{{ route('single_new',$item->id) }}"
                                                                         title="{{ $item->title }}">{{ $item->title }}</a>
                                                                 </h4>
-                                                                <p style="color: black">{!! $item->body !!}
-                                                                </p>
+                                                                <span style="color: black">{!! $item->body !!}
+                                                                </span>
                                                             </li>
                                                             @endforeach
                                                         </ul>
