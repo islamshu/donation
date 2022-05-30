@@ -56,6 +56,7 @@
     body{
         background: #fff url(https://i.pinimg.com/originals/5d/a7/d7/5da7d7ae5bf9ea9dc59d83b3fc5cc838.jpg) center top no-repeat !important;
         color: black !important;
+        background-size: 1500px 1536px !important;
     }
     .gkMain {
         color: #000 !important;
