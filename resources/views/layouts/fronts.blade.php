@@ -127,6 +127,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
     background: transparent;
 }
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: #000;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
