@@ -587,7 +587,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
         </div>
       </div>
       <div id="bottomWrap" class="gkWrap">
-        <center><img class="paycon" src="https://dahersaleh.com/templates/gk_black_and_white/images/visa.png" />
+        <center>
             
             <footer class="Copy__footer">
       
