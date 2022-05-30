@@ -166,7 +166,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
             <h1 id="gkLogo" class="testtt">
                 <a href="/">
-                    <img src="{{ asset('uploads/'.App\General::first()->logo) }}" alt="{{ App\General::first()->name_en }} " Assalam "" />
+                    <img src="{{ asset('uploads/'.App\General::first()->logo) }}" width="200" height="130" alt="{{ App\General::first()->name_en }} " Assalam "" />
                 </a>
                 <div class="mod-languages">
 
