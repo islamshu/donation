@@ -54,7 +54,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style type="text/css">
     body{
-        background: #fff url(https://www.elcato.org/sites/default/files/images/stories/gettyimages-1060748862.jpg) center top no-repeat !important;
+        background: #fff url(https://i.pinimg.com/originals/5d/a7/d7/5da7d7ae5bf9ea9dc59d83b3fc5cc838.jpg) center top no-repeat !important;
         color: black !important;
     }
     .gkMain {
