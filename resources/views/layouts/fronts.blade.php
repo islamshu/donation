@@ -122,7 +122,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
     padding: 0;
     border: 0;
     outline: 0;
-    color: #ffc4c4;
+    color: #fff;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
@@ -502,7 +502,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
                                                                     <a href="{{ route('single_new',$item->id) }}"
                                                                         title="{{ $item->title }}">{{ $item->title }}</a>
                                                                 </h4>
-                                                                <p>{!! $item->body !!}
+                                                                <p style="color: black">{!! $item->body !!}
                                                                 </p>
                                                             </li>
                                                             @endforeach
