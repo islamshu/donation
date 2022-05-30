@@ -107,6 +107,9 @@
         #gkuseruser1 {
             width: 100%;
         }
+        .colornew p{
+            color: black  !important;
+        }
         .box > h3, .box_text > h3, .box_menu > h3 {
     background: transparent url(https://res.cloudinary.com/practicaldev/image/fetch/s--BuPz-p40--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png) repeat-x 0 0;
     color: #fff;
@@ -502,7 +505,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
                                                                     <a style="color: black" href="{{ route('single_new',$item->id) }}"
                                                                         title="{{ $item->title }}">{{ $item->title }}</a>
                                                                 </h4>
-                                                                <span style="color: black">{!! $item->body !!}
+                                                                <span class="colornew" style="color: black">{!! $item->body !!}
                                                                 </span>
                                                             </li>
                                                             @endforeach
