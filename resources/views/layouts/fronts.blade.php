@@ -111,7 +111,7 @@
     color: #fff;
     }
     #wrapperContent2 {
-    background: #50aaaa  !important;
+    background: #556beb  !important;
     border: 1px solid #e0dfd5 !important;
     padding: 11px 11px 0 !important;
     /* color: red !important; */
