@@ -476,7 +476,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
                                             <div class="custom">
 
                                                 <a data-toggle="modal" data-target="#myModal"
-                                                    target="_blank"><img src="https://www.theiofoundation.org/wp-content/uploads/2020/08/Donate-Logo04-01.png"
+                                                    target="_blank"><img src="https://feedingthevalley.org/wp-content/uploads/2020/11/57935f84ba_Click-Here-to-Donate.png"
                                                     width="240" alt="donate-button" border="0"></a>
                                                 </form>
 
