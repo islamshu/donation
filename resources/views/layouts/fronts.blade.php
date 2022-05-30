@@ -478,12 +478,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
                                                 <a data-toggle="modal" data-target="#myModal"
                                                     target="_blank"><img src="https://feedingthevalley.org/wp-content/uploads/2020/11/57935f84ba_Click-Here-to-Donate.png"
                                                     width="240" alt="donate-button" border="0"></a>
-                                                </form>
-
-                                                <p><br />
-                                                    <a
-                                                        href="index352c.html?option=com_content&amp;view=article&amp;id=73:make-a-donation&amp;catid=27:kontent&amp;Itemid=255"></a>
-                                                </p>
+  
                                             </div>
                                         </div>
                                     </div>
