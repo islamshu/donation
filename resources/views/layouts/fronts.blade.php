@@ -589,7 +589,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
       <div id="bottomWrap" class="gkWrap">
         <center><img class="paycon" src="https://dahersaleh.com/templates/gk_black_and_white/images/visa.png" /><img class="paycon" src="https://dahersaleh.com/templates/gk_black_and_white/images/mastercard.jpg" /></center>
         <div style="text-align:center !important;">
-            <a title="Создание сайтов" style="text-decoration:none" href="wa.me/00970592722789" target="_blank">Islam Shublaq</a></div>
+            <a title="Создание сайтов" style="text-decoration:none" href="wa.me/00970592722789" target="_blank">Designed by Eng: Islam Moh Shublaq</a></div>
     </div>
 
 
