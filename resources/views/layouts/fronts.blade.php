@@ -499,7 +499,7 @@ html, body, div,p, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, bloc
 
                                                             <li class="@if($key % 2 == 0) even @else odd @endif">
                                                                 <h4>
-                                                                    <a href="{{ route('single_new',$item->id) }}"
+                                                                    <a style="color: black" href="{{ route('single_new',$item->id) }}"
                                                                         title="{{ $item->title }}">{{ $item->title }}</a>
                                                                 </h4>
                                                                 <p style="color: black">{!! $item->body !!}
