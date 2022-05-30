@@ -59,7 +59,7 @@
         background-size: 1500px 1536px !important;
     }
     .gkMain {
-        color: #000 !important;
+        color: #fff !important;
     }
     .gkIsSlide{
         width: 100%;
