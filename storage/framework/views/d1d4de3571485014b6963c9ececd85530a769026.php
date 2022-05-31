@@ -301,8 +301,6 @@
                                     <button type="submit" class="btn btn-success"><?php echo e(__('Login')); ?>
 
                                     </button>
-
-                                    <a class="btn btn-link" href="">Forgot Your Password?</a>
                                 </div>
                             </div>
                         </form>
@@ -498,6 +496,22 @@
 
 
                     </div>
+                    <div id="myModalnotvalid" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                      
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <p style="color: black"><?php echo app('translator')->get('Donation request in progress'); ?></p>
+                            </div>
+                            
+                          </div>
+                      
+                        </div>
+                      </div>
 
                     <div id="gkContent" class="gkMain gkCol gkPaddingTBLR">
 
@@ -558,7 +572,13 @@
                                         <div class="custom">
 
                                             <a data-toggle="modal" <?php if(auth()->guard()->guest()): ?> data-target="#ModalLoginForm" <?php else: ?>
-                                            data-target="#myModal" <?php endif; ?> target="_blank"
+                                           <?php if(auth()->user()->status == 0): ?>
+                                           data-target="#myModalnotvalid" 
+                                           <?php else: ?>
+                                           
+                                            data-target="#myModal" 
+                                            <?php endif; ?>
+                                            <?php endif; ?> target="_blank"
                                                 href=""><img
                                                     src="https://feedingthevalley.org/wp-content/uploads/2020/11/57935f84ba_Click-Here-to-Donate.png"
                                                     width="240" alt="donate-button" border="0"></a>

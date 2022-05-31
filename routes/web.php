@@ -79,7 +79,7 @@ Route::group(['prefix' => 'dashbaord'], function() {
 
 
 Route::get('/login_admin', 'HomeController@login');
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('homepage_index');
 Route::get('/about_us', 'HomeController@about_us');
 Route::get('/news', 'HomeController@news');
 Route::get('/gallery','HomeController@gallery');
@@ -87,14 +87,16 @@ Route::get('contact','HomeController@contact');
 Route::get('/gallery_single/{id}','HomeController@gallery_single')->name('gallery_single');
 
 
-Auth::routes();
 
 
 Route::get('/news/{id}', 'HomeController@new')->name('single_new');
 
 Route::get('create_user_activiry/{id}','Api\ContestController@create_user_activiry')->name('api.create_user_activiry');  
 Route::post('subscribe_actitvty','Api\ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
-Route::get('stripe', 'StripePaymentController@stripe')->name('stripe.get');
 Route::get('home','HomeController@index');
+Route::middleware(['approved'])->group(function () {
+    Auth::routes();
 
+Route::get('stripe', 'StripePaymentController@stripe')->name('stripe.get');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+});

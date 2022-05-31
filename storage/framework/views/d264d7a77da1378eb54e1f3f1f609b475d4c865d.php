@@ -44,12 +44,11 @@
                             <thead>
                                 <tr>
                                     <th># </th>
-                                    <th>اسم المستخدم</th>
-                                    <th>البريد الإلكتروني </th>
-                                    <th>النوع</th>
-                                    <th>الحالة</th>
+                                    <th><?php echo app('translator')->get('name'); ?></th>
+                                    <th><?php echo app('translator')->get('E-mail'); ?></th>
+                                    <th><?php echo app('translator')->get('status'); ?></th>
                                     
-                                    <th>Action</th>
+                                    <th><?php echo app('translator')->get('action'); ?></th>
                                    
                                 </tr>
                             </thead>
@@ -59,7 +58,6 @@
                                 <tr>
                                     <td><?php echo e($key+1); ?></td>
 
-                                    <td style="text-align: center"><img src="<?php echo e(asset('uploads/'.$item->image)); ?>" width="60" height="60" alt="<?php echo e($item->name); ?>"></td>
                                     <td><?php echo e($item->name); ?></td>   
                                     <td><?php echo e($item->email); ?></td>   
                                     <td><?php if($item->status == 0): ?>
@@ -73,12 +71,7 @@
                                     </td> 
                                        
                                              <td>
-                                        <a  href="<?php echo e(route('users.show',$item->id)); ?>" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
-                                            <i class="material-icons">remove_red_eye</i>
-                                        </a>
-                                        <a  href="<?php echo e(route('users.edit',$item->id)); ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
-                                            <i class="material-icons">edit</i>
-                                        </a>
+                                    
     
 
                                           
@@ -96,15 +89,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th># </th>
-                                    <th>الصورة </th>
-                                    <th>اسم المستخدم</th>
-                                    <th>البريد الإلكتروني </th>
-                                    <th>النوع</th>
-                                    <?php if(Route::is('users.famous')): ?>
-                                    <th>اثبات الحساب</th>
-                                    <?php endif; ?>
-                                    <th>Action</th>
+                                    <th>#</th>
+                                    <th><?php echo app('translator')->get('name'); ?></th>
+                                    <th><?php echo app('translator')->get('E-mail'); ?></th>
+                                    <th><?php echo app('translator')->get('status'); ?></th>
+                                    
+                                    <th><?php echo app('translator')->get('action'); ?></th>
                                    
                                 </tr>
                             </tfoot>

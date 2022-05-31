@@ -492,6 +492,22 @@
 
 
                     </div>
+                    <div id="myModalnotvalid" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                      
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <p style="color: black">@lang('Your Account  in progress')</p>
+                            </div>
+                            
+                          </div>
+                      
+                        </div>
+                      </div>
 
                     <div id="gkContent" class="gkMain gkCol gkPaddingTBLR">
 
@@ -552,7 +568,13 @@
                                         <div class="custom">
 
                                             <a data-toggle="modal" @guest data-target="#ModalLoginForm" @else
-                                            data-target="#myModal" @endguest target="_blank"
+                                           @if(auth()->user()->status == 0)
+                                           data-target="#myModalnotvalid" 
+                                           @else
+                                           
+                                            data-target="#myModal" 
+                                            @endif
+                                            @endguest target="_blank"
                                                 href=""><img
                                                     src="https://feedingthevalley.org/wp-content/uploads/2020/11/57935f84ba_Click-Here-to-Donate.png"
                                                     width="240" alt="donate-button" border="0"></a>

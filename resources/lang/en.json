@@ -54,7 +54,10 @@
     "Payment successful!": "Payment successful!",
     "login": "login",
     "password": "password",
-    "Payment Error Ocerr": "Payment Error Ocerr"
+    "Payment Error Ocerr": "Payment Error Ocerr",
+    "name": "name",
+    "status": "status",
+    "Your Account  in progress": "Your Account  in progress"
 
 
 }

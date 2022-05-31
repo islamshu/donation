@@ -44,12 +44,11 @@
                             <thead>
                                 <tr>
                                     <th># </th>
-                                    <th>اسم المستخدم</th>
-                                    <th>البريد الإلكتروني </th>
-                                    <th>النوع</th>
-                                    <th>الحالة</th>
+                                    <th>@lang('name')</th>
+                                    <th>@lang('E-mail')</th>
+                                    <th>@lang('status')</th>
                                     {{-- <th>الدور</th> --}}
-                                    <th>Action</th>
+                                    <th>@lang('action')</th>
                                    
                                 </tr>
                             </thead>
@@ -59,7 +58,6 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
 
-                                    <td style="text-align: center"><img src="{{ asset('uploads/'.$item->image) }}" width="60" height="60" alt="{{ $item->name }}"></td>
                                     <td>{{ $item->name }}</td>   
                                     <td>{{ $item->email }}</td>   
                                     <td>@if($item->status == 0)
@@ -73,12 +71,7 @@
                                     </td> 
                                        
                                              <td>
-                                        <a  href="{{ route('users.show',$item->id) }}" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
-                                            <i class="material-icons">remove_red_eye</i>
-                                        </a>
-                                        <a  href="{{ route('users.edit',$item->id) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
-                                            <i class="material-icons">edit</i>
-                                        </a>
+                                    
     
 
                                           
@@ -96,15 +89,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th># </th>
-                                    <th>الصورة </th>
-                                    <th>اسم المستخدم</th>
-                                    <th>البريد الإلكتروني </th>
-                                    <th>النوع</th>
-                                    @if(Route::is('users.famous'))
-                                    <th>اثبات الحساب</th>
-                                    @endif
-                                    <th>Action</th>
+                                    <th>#</th>
+                                    <th>@lang('name')</th>
+                                    <th>@lang('E-mail')</th>
+                                    <th>@lang('status')</th>
+                                    {{-- <th>الدور</th> --}}
+                                    <th>@lang('action')</th>
                                    
                                 </tr>
                             </tfoot>
