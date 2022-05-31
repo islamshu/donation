@@ -299,8 +299,6 @@
                                 <div>
                                     <button type="submit" class="btn btn-success">{{ __('Login') }}
                                     </button>
-
-                                    <a class="btn btn-link" href="">Forgot Your Password?</a>
                                 </div>
                             </div>
                         </form>
