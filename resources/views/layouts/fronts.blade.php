@@ -478,7 +478,13 @@
                                                         href="/contact">@lang('Contact us')</a></li>
                                                 <li class="item-255"><a style="color: #000 !important"
                                                     data-toggle="modal" @guest data-target="#ModalLoginForm" @else
-                                                    data-target="#myModal" @endguest>@lang('Make a donation')</a></li>
+                                                    @if(auth()->user()->status == 0)
+                                                    data-target="#myModalnotvalid" 
+                                                    @else
+                                                    
+                                                     data-target="#myModal" 
+                                                     @endif
+                                                      @endguest>@lang('Make a donation')</a></li>
                                         </ul>
                                     </div>
                                 </div>
