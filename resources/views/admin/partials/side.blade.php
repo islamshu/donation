@@ -57,6 +57,12 @@
                         <span>{{ __('Gallery') }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('users.index') }}">
+                        <i data-feather="monitor"></i>
+                        <span>{{ __('Users') }}</span>
+                    </a>
+                </li>
   
                 <li>
                     <a href="{{ route('show_translate') }}">
