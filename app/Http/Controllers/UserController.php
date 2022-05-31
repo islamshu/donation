@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('users',User::withoutBanned()->get());
+        return view('admin.users.index')->with('users',User::get());
     }
     public function paindUser()
     {
@@ -38,6 +38,14 @@ class UserController extends Controller
             $notification->markAsRead();
             return redirect($notification->data['url']);
         }
+    }
+    public function update_status($id)
+    {
+        $user = User::find($id);
+        $user->status  = 1;
+        $user->save();
+        return redirect()->back()->with(['success' =>trans('Edited successfully')]);
+
     }
     public function user()
     {

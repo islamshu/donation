@@ -1,8 +1,8 @@
-@extends('layouts.admin')
-@section('css')
 
-@endsection
-@section('content')
+<?php $__env->startSection('css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
     <div class="block-header">
         <div class="row">
@@ -10,15 +10,15 @@
                 <ul class="breadcrumb breadcrumb-style ">
                
                     <li class="breadcrumb-item bcrumb-1">
-                        <a href="{{ route('admin.dashboard') }}">
-                            <i class="fas fa-home"></i> @lang('Home')</a>
+                        <a href="<?php echo e(route('admin.dashboard')); ?>">
+                            <i class="fas fa-home"></i> <?php echo app('translator')->get('Home'); ?></a>
                     </li>
-                    @if( !Route::is('user.paned'))
+                    <?php if( !Route::is('user.paned')): ?>
 
                     <li class="breadcrumb-item active">المستخدمين</li>
-                    @else
+                    <?php else: ?>
                     <li class="breadcrumb-item active">المستخدمين المحظروين</li>
-                    @endif
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -28,17 +28,17 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    @if( !Route::is('user.paned'))
+                    <?php if( !Route::is('user.paned')): ?>
                     <h2 style="display: inline">المستخدمين</h2>
-                    <a class="btn btn-info" href="{{ route('users.create') }}">اضف مستخدم جديد</a>
-                    @else
+                    <a class="btn btn-info" href="<?php echo e(route('users.create')); ?>">اضف مستخدم جديد</a>
+                    <?php else: ?>
                     <h2 style="display: inline">المستخدمين المحظروين</h2>
-                    @endif
+                    <?php endif; ?>
                  
                 <div class="body">
                     <div class="table-responsive">
-                        @include('admin.partials._success')
-                        @include('admin.partials._error')
+                        <?php echo $__env->make('admin.partials._success', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        <?php echo $__env->make('admin.partials._error', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         <table id="table"
                             class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
@@ -48,42 +48,42 @@
                                     <th>البريد الإلكتروني </th>
                                     <th>النوع</th>
                                     <th>الحالة</th>
-                                    {{-- <th>الدور</th> --}}
+                                    
                                     <th>Action</th>
                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $key=>$item)
+                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
+                                    <td><?php echo e($key+1); ?></td>
 
-                                    <td style="text-align: center"><img src="{{ asset('uploads/'.$item->image) }}" width="60" height="60" alt="{{ $item->name }}"></td>
-                                    <td>{{ $item->name }}</td>   
-                                    <td>{{ $item->email }}</td>   
-                                    <td>@if($item->status == 0)
+                                    <td style="text-align: center"><img src="<?php echo e(asset('uploads/'.$item->image)); ?>" width="60" height="60" alt="<?php echo e($item->name); ?>"></td>
+                                    <td><?php echo e($item->name); ?></td>   
+                                    <td><?php echo e($item->email); ?></td>   
+                                    <td><?php if($item->status == 0): ?>
                                         <a href="" class="btn btn-info">Approve</a>
-                                        @else
+                                        <?php else: ?>
                                         <a  class="btn btn-success">This User Approve</a>
-                                        @endif
+                                        <?php endif; ?>
 
                                         
 
                                     </td> 
                                        
                                              <td>
-                                        <a  href="{{ route('users.show',$item->id) }}" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
+                                        <a  href="<?php echo e(route('users.show',$item->id)); ?>" class="btn bg-green btn-circle waves-effect waves-circle waves-float" >
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
-                                        <a  href="{{ route('users.edit',$item->id) }}" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
+                                        <a  href="<?php echo e(route('users.edit',$item->id)); ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float" >
                                             <i class="material-icons">edit</i>
                                         </a>
     
 
                                           
-                                        <form style="display: inline" method="post" action="{{ route('users.destroy',$item->id) }}">
-                                        @method('delete') @csrf
+                                        <form style="display: inline" method="post" action="<?php echo e(route('users.destroy',$item->id)); ?>">
+                                        <?php echo method_field('delete'); ?> <?php echo csrf_field(); ?>
 
                                         <button class=" btn bg-red btn-circle waves-effect waves-circle waves-float delete-confirm" type="submit" > <i class="material-icons">clear</i></button>
                                     </form>
@@ -92,7 +92,7 @@
                                         
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -101,9 +101,9 @@
                                     <th>اسم المستخدم</th>
                                     <th>البريد الإلكتروني </th>
                                     <th>النوع</th>
-                                    @if(Route::is('users.famous'))
+                                    <?php if(Route::is('users.famous')): ?>
                                     <th>اثبات الحساب</th>
-                                    @endif
+                                    <?php endif; ?>
                                     <th>Action</th>
                                    
                                 </tr>
@@ -117,9 +117,9 @@
     <!-- #END# Basic Table -->
     <!-- Striped Rows -->
   
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
     <script>
          $( document ).ready(function() {
   
@@ -134,8 +134,8 @@
             if(is_ture == 0){
                  $.ajax({
             type: "post",
-            url: '{{ route('users.verfy_account') }}',
-      data: { "_token": "{{csrf_token()}}",'id':id ,'status':1}, 
+            url: '<?php echo e(route('users.verfy_account')); ?>',
+      data: { "_token": "<?php echo e(csrf_token()); ?>",'id':id ,'status':1}, 
             success: function (data) {
                   //    AIZ.plugins.notify('success', 'متابعة');
 
@@ -170,8 +170,8 @@ if (willDelete) {
 
                  $.ajax({
             type: "post",
-            url: '{{ route('users.verfy_account') }}',
-            data: { "_token": "{{csrf_token()}}",'id':id ,'status':0}, 
+            url: '<?php echo e(route('users.verfy_account')); ?>',
+            data: { "_token": "<?php echo e(csrf_token()); ?>",'id':id ,'status':0}, 
             success: function (data) {
       
                         $(thisContext).val("تفعيل");  
@@ -201,5 +201,7 @@ if (willDelete) {
       
 });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\prize\resources\views/admin/users/index.blade.php ENDPATH**/ ?>
