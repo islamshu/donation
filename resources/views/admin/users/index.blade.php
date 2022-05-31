@@ -63,7 +63,7 @@
                                     <td>{{ $item->name }}</td>   
                                     <td>{{ $item->email }}</td>   
                                     <td>@if($item->status == 0)
-                                        <a href="" class="btn btn-info">Approve</a>
+                                        <a href="{{ route('users-update-status',$item->id) }}" class="btn btn-info">Approve</a>
                                         @else
                                         <a  class="btn btn-success">This User Approve</a>
                                         @endif

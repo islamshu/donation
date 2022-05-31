@@ -63,7 +63,7 @@
                                     <td><?php echo e($item->name); ?></td>   
                                     <td><?php echo e($item->email); ?></td>   
                                     <td><?php if($item->status == 0): ?>
-                                        <a href="" class="btn btn-info">Approve</a>
+                                        <a href="<?php echo e(route('users-update-status',$item->id)); ?>" class="btn btn-info">Approve</a>
                                         <?php else: ?>
                                         <a  class="btn btn-success">This User Approve</a>
                                         <?php endif; ?>

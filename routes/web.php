@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::resource('city', CityController::class);
     Route::get('/logout','AdminController@logout' )->name('admin.logout');
     Route::resource('users','UserController' );
-    Route::get('users-update-status','UserController@update_status' );
+    Route::get('users-update-status/{id}','UserController@update_status' )->name('users-update-status');
 
     Route::resource('pages','PageController' );
     Route::resource('contests','ContestController');
