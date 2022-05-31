@@ -85,7 +85,7 @@ Route::get('contact','HomeController@contact');
 Route::get('/gallery_single/{id}','HomeController@gallery_single')->name('gallery_single');
 
 
-
+Auth::routes();
 
 
 Route::get('/news/{id}', 'HomeController@new')->name('single_new');
@@ -93,4 +93,6 @@ Route::get('/news/{id}', 'HomeController@new')->name('single_new');
 Route::get('create_user_activiry/{id}','Api\ContestController@create_user_activiry')->name('api.create_user_activiry');  
 Route::post('subscribe_actitvty','Api\ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
 Route::get('stripe', 'StripePaymentController@stripe')->name('stripe.get');
+Route::get('home','HomeController@index');
+
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
