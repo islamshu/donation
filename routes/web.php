@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\CheckStatus;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,8 +96,10 @@ Route::get('create_user_activiry/{id}','Api\ContestController@create_user_activi
 Route::post('subscribe_actitvty','Api\ContestController@subscribe_actitvty')->name('api.subscribe_actitvty');  
 Route::get('home','HomeController@index');
 Route::middleware(['approved'])->group(function () {
-    Auth::routes();
+Auth::routes();
+Route::middleware([CheckStatus::class])->group(function(){
 
 Route::get('stripe', 'StripePaymentController@stripe')->name('stripe.get');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+});
 });

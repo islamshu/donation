@@ -56,11 +56,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <style type="text/css">
         body {
-            background: #fff url(https://i.pinimg.com/originals/5d/a7/d7/5da7d7ae5bf9ea9dc59d83b3fc5cc838.jpg) center top no-repeat !important;
+            
+            /* https://i.pinimg.com/originals/5d/a7/d7/5da7d7ae5bf9ea9dc59d83b3fc5cc838.jpg */
+            background: #fff url(https://j.gifs.com/KrWgwQ.gif) center top no-repeat !important;
             color: black !important;
-            background-size: 1682px 1536px !important;
+            background-size: 1800px 1600px !important;
         }
 
         .gkMain {
@@ -225,6 +229,7 @@
         }
 
     </style>
+
     <script src="https://dahersaleh.com/media/system/js/mootools-core.js" type="text/javascript"></script>
     <script src="https://dahersaleh.com/media/system/js/core.js" type="text/javascript"></script>
     <script src="https://dahersaleh.com/media/system/js/caption.js" type="text/javascript"></script>
@@ -249,6 +254,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
         integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous">
     </script>
+        <script type="text/javascript">
+            window.addEvent('load', function() {
+                new JCaption('img.caption');
+            });
+            $GKMenu = {
+                height: true,
+                width: true,
+                duration: 250
+            };
+            $GK_TMPL_URL = "https://dahersaleh.com/templates/gk_black_and_white";
+            try {
+                $Gavick;
+            } catch (e) {
+                $Gavick = {};
+            };
+            $Gavick["gkIs-gk-is-156"] = {
+                "anim_speed": 900,
+                "anim_interval": 2000,
+                "autoanim": 1,
+                "anim_type": "opacity",
+                "slide_links": 0,
+                "stripe_width": 60
+            };
+        </script>
+    
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
@@ -482,7 +512,13 @@
                                                         href="/contact"><?php echo app('translator')->get('Contact us'); ?></a></li>
                                                 <li class="item-255"><a style="color: #000 !important"
                                                     data-toggle="modal" <?php if(auth()->guard()->guest()): ?> data-target="#ModalLoginForm" <?php else: ?>
-                                                    data-target="#myModal" <?php endif; ?>><?php echo app('translator')->get('Make a donation'); ?></a></li>
+                                                    <?php if(auth()->user()->status == 0): ?>
+                                                    data-target="#myModalnotvalid" 
+                                                    <?php else: ?>
+                                                    
+                                                     data-target="#myModal" 
+                                                     <?php endif; ?>
+                                                      <?php endif; ?>><?php echo app('translator')->get('Make a donation'); ?></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -505,7 +541,7 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                              <p style="color: black"><?php echo app('translator')->get('Donation request in progress'); ?></p>
+                              <p style="color: black"><?php echo app('translator')->get('Your Account  in progress'); ?></p>
                             </div>
                             
                           </div>
@@ -870,6 +906,7 @@
 
 
 
+<?php echo $__env->make('sweet::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </body>
 

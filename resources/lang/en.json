@@ -58,7 +58,9 @@
     "name": "name",
     "status": "status",
     "Your Account  in progress": "Your Account  in progress",
-    "Users": "Users"
+    "Users": "Users",
+    "You need to login": "You need to login",
+    "Your Account Not Active": "Your Account Not Active"
 
 
 }

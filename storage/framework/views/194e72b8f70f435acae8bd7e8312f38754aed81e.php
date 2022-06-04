@@ -57,6 +57,12 @@
                         <span><?php echo e(__('Gallery')); ?></span>
                     </a>
                 </li>
+                <li>
+                    <a href="<?php echo e(route('users.index')); ?>">
+                        <i data-feather="monitor"></i>
+                        <span><?php echo e(__('Users')); ?></span>
+                    </a>
+                </li>
   
                 <li>
                     <a href="<?php echo e(route('show_translate')); ?>">

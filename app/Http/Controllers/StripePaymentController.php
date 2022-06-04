@@ -7,7 +7,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Session;
 use Stripe;
-   
+use SweetAlert;
+
 class StripePaymentController extends Controller
 {
     /**
@@ -17,6 +18,10 @@ class StripePaymentController extends Controller
      */
     public function stripe(Request $request)
     {
+        if(!auth()->check()){
+            alert()->error('Error Message',trans('You need to login'));
+            return redirect('/');
+        }
         $amount = $request->amount;
         session(['amount' => $amount]);
         return view('stripe');

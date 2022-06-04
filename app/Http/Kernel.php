@@ -68,6 +68,8 @@ class Kernel extends HttpKernel
         'header_request_env' => \App\Http\Middleware\HeaderRequestEnv::class,
         'is-ban' => \App\Http\Middleware\ForbidBannedUserCustom::class,
         'approved' => \App\Http\Middleware\CheckApproved::class,
+        'checkStatus' => \App\Http\Middleware\CheckStatus::class,
+
 
 
     ];
