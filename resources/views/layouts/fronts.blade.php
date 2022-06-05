@@ -299,8 +299,10 @@
                     <div class="modal-header">
                         <h1 class="modal-title">{{ __('Login') }}</h1>
                     </div>
+                    <div id="errors-list"></div>
+
                     <div class="modal-body">
-                        <form role="form" method="POST" action="{{ route('login') }}">
+                        <form role="form" id="handleAjax" method="POST" action="{{ route('doLogin') }}">
                             @csrf
                             <div class="form-group">
                                 <label class="control-label">{{ __('E-Mail Address') }}</label>
@@ -332,31 +334,34 @@
                                 </div>
                             </div>
                         </form>
-                        <h1>{{ __('Register') }}</h1>
-                        <form role="form" method="POST" action="{{ route('register') }}">
+                        <br>
+                        <h1 style="text-align: center">{{ __('Register') }}</h1>
+                        <div id="errors-listre"></div>
+
+                        <form role="form" method="POST" id="handleAjaxre" action="{{ route('doRegister') }}">
                             @csrf
                             <div class="form-group">
                                 <label class="control-label">{{ __('Name') }}</label>
                                 <div>
-                                    <input type="text" class="form-control input-lg" name="name" value="">
+                                    <input type="text" required class="form-control input-lg" name="name" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{ __('E-Mail Address') }}</label>
                                 <div>
-                                    <input type="email" class="form-control input-lg" name="email" value="">
+                                    <input type="email" required class="form-control input-lg" name="email" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{ __('Password') }}</label>
                                 <div>
-                                    <input type="password" class="form-control input-lg" name="password">
+                                    <input type="password" required class="form-control input-lg" name="password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{ __('Confirm Password') }}</label>
                                 <div>
-                                    <input type="password" class="form-control input-lg" name="password_confirmation">
+                                    <input type="password" required class="form-control input-lg" name="password_confirmation">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -903,6 +908,60 @@
 
 @include('sweet::alert')
 
+
+<script>
+    $(function() {
+    // handle submit event of form
+      $(document).on("submit", "#handleAjax", function() {
+        var e = this;
+        // change login button text before ajax
+        $(this).find("[type='submit']").html("LOGIN...");
+
+        $.post($(this).attr('action'), $(this).serialize(), function(data) {
+
+          $(e).find("[type='submit']").html("LOGIN");
+          if (data.status) { // If success then redirect to login url
+            window.location = data.redirect_location;
+          }
+        }).fail(function(response) {
+            // handle error and show in html
+          $(e).find("[type='submit']").html("LOGIN");
+          $(".alert").remove();
+          var erroJson = JSON.parse(response.responseText);
+          for (var err in erroJson) {
+            for (var errstr of erroJson[err])
+              $("#errors-list").append("<div class='alert alert-danger'>" + errstr + "</div>");
+          }
+
+        });
+        return false;
+      });
+      $(document).on("submit", "#handleAjaxre", function() {
+        var e = this;
+        // change login button text before ajax
+        $(this).find("[type='submit']").html("LOGIN...");
+
+        $.post($(this).attr('action'), $(this).serialize(), function(data) {
+
+          $(e).find("[type='submit']").html("LOGIN");
+          if (data.status) { // If success then redirect to login url
+            window.location = data.redirect_location;
+          }
+        }).fail(function(response) {
+            // handle error and show in html
+          $(e).find("[type='submit']").html("LOGIN");
+          $(".alert").remove();
+          var erroJson = JSON.parse(response.responseText);
+          for (var err in erroJson) {
+            for (var errstr of erroJson[err])
+              $("#errors-listre").append("<div class='alert alert-danger'>" + errstr + "</div>");
+          }
+
+        });
+        return false;
+      });
+    });
+  </script>
 </body>
 
 

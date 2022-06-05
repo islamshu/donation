@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckStatus;
 
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
     Route::get('about','AboutController@index')->name('about.index');
     Route::post('about','AboutController@store')->name('about.store');
     Route::get('homepage','HomeController@indexpage')->name('home.index');
+ 
     Route::post('homepage','HomeController@storepage')->name('home.store');
     Route::resource('gallery','GallaryController');
     Route::get('panUser/{id}','UserController@panUser')->name('user.pan');
@@ -71,6 +73,8 @@ Route::group(['middleware' => ['auth:admin'],'prefix' => 'dashbaord'], function(
 
 });
 // Auth::routes();
+Route::post('do_login', 'HomeController@doLogin')->name('doLogin');
+Route::post('do_register', 'HomeController@doRegister')->name('doRegister');
 Route::group(['prefix' => 'dashbaord'], function() {
     Route::get('/login','AdminController@get_login' )->name('get_login');
     Route::post('/login','AdminController@post_login' )->name('post_login');
