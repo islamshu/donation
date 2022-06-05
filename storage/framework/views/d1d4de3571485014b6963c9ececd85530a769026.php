@@ -896,7 +896,7 @@
         </footer>
     </center>
     <div style="text-align:center !important;">
-        <a title="Создание сайтов" style="text-decoration:none" href="wa.me/00970592722789" target="_blank">Designed
+        <a title="Создание сайтов" style="text-decoration:none" href="https://wa.me/00970592722789" target="_blank">Designed
             by Eng: Islam Moh Shublaq</a>
     </div>
 </div>

@@ -61,7 +61,7 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>@lang('Name on Card')</label> <input
-                                    class='form-control' maxlength='4' type='text'>
+                                    class='form-control' type='text'>
                             </div>
                         </div>
   
