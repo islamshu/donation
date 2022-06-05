@@ -18,11 +18,16 @@ class StripePaymentController extends Controller
      */
     public function stripe(Request $request)
     {
+    
         if(!auth()->check()){
             alert()->error('Error Message',trans('You need to login'));
             return redirect('/');
         }
         $amount = $request->amount;
+        if( $amount < 1){
+            alert()->error('Error Message',trans('Donation value cannot be less than 1'));
+            return redirect('/');  
+        }
         session(['amount' => $amount]);
         return view('stripe');
     }

@@ -68,7 +68,7 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>@lang('Card Number')</label> <input
-                                    autocomplete='off' class='form-control card-number' maxlength='16'
+                                    autocomplete='off' id="IBAN" class='form-control card-number' maxlength='19'
                                     type='text'>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>@lang('Expiration Year')</label> <input
-                                    class='form-control card-expiry-year' placeholder='YYYY' maxlength='4'
+                                    class='form-control card-expiry-year' placeholder='YY' maxlength='2'
                                     type='text'>
                             </div>
                         </div>
@@ -114,7 +114,11 @@
 </body>
   
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  
+  <script>
+      document.getElementById('IBAN').addEventListener('input', function (e) {
+  e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+});
+  </script>
 <script type="text/javascript">
 $(function() {
     var $form         = $(".require-validation");
@@ -145,7 +149,7 @@ $(function() {
         number: $('.card-number').val(),
         cvc: $('.card-cvc').val(),
         exp_month: $('.card-expiry-month').val(),
-        exp_year: $('.card-expiry-year').val()
+        exp_year: '20'+$('.card-expiry-year').val()
       }, stripeResponseHandler);
     }
   

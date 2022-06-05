@@ -60,7 +60,8 @@
     "Your Account  in progress": "Your Account  in progress",
     "Users": "Users",
     "You need to login": "You need to login",
-    "Your Account Not Active": "Your Account Not Active"
+    "Your Account Not Active": "Your Account Not Active",
+    "Donation value cannot be less than 1": "Donation value cannot be less than 1"
 
 
 }
