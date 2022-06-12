@@ -16,7 +16,7 @@
                
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="<?php echo e(route('admin.dashboard')); ?>">
-                            <i class="fas fa-home"></i> @lang('Home')</a>
+                            <i class="fas fa-home"></i> <?php echo app('translator')->get('Home'); ?></a>
                     </li>
                     <li class="breadcrumb-item active">المستخدمين</li>
 
@@ -73,92 +73,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                                <label for="phone"> رقم الهاتف </label>
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input required type="number" value="<?php echo e(old('phone')); ?>" name="phone" id="phone" class="form-control"
-                                                            placeholder="الهاتف">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                                <label for="type"> نوع المستخدم</label>
-                                            </div>
-                                            
-                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <select required  value="<?php echo e(old('type')); ?>" class="form-control"  name="type" id="user_type">
-                                                        
-                                                            <option value="" selected disabled>نوع المستخدم</option>
-                                            `                     <option value="user"  >مستخدم </option>
-                                                            <option value="famous"  >مشهور</option>
-
-                                                            
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                                <label for="branches"> الجنس</label>
-                                            </div>
-                                            
-                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <select required  value="<?php echo e(old('gender')); ?>" class="form-control"  name="gender" id="gender">
-                                                            <option value="" selected disabled>الجنس</option>
-                                                            <option value="1"  >ذكر</option>
-                                                            <option value="2"  >انثى</option>
-
-                                                            
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-
-                                        <div class="row clearfix">
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                                <label for="branches"> المدينة</label>
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <select required  value="<?php echo e(old('address_id')); ?>" class="form-control"  name="address_id" id="address_id">
-                                                            <option value="" selected disabled>المدينة</option>
-                                                            <?php $__currentLoopData = $citys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                
-                                                          
-                                                            <option value="<?php echo e($item->id); ?>"><?php echo e($item->name_ar); ?></option>
-                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row clearfix" id="dateOf">
-                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                                <label for="date">تاريخ الميلاد</label>
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <div class="form-group">
-                                                    <div  class="form-line">
-                                                        <input required name="DOB"  type="date" id="DOB" class="form-control"
-                                                            placeholder="تاريخ الميلاد  ">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                    
                                         <div class="row clearfix">
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -178,7 +92,7 @@
                                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5">
                                             </div>
                                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                                <input required type="submit" value="{{ __('save') }}"  class="filled-in btn btn-info">
+                                                <input required type="submit" value="<?php echo e(__('save')); ?>"  class="filled-in btn btn-info">
                                             </div>
                                         </div>
                                     </form>

@@ -127,22 +127,15 @@ class UserController extends Controller
     {
         $request->validate([
             'email'=>'required|email|unique:users,email',
-            'phone'=>'required|unique:users,phone',
             'name'=>'required',
-            'type'=>'required',
             'password'=>'required',
-            'gender'=>'required',
-            'address_id'=>'required'
+
         ]);
         $request_all = $request->except(['password','type']);
-        $request_all['type']=$request->type;
         $request_all['password'] = bcrypt($request->password);
-        $request_all['image'] = 'user/deflut.png';
 
       $user =   User::create($request_all);
-      $more = new AdditionalUser();
-      $more->user_id = $user->id;
-      $more->save();
+
         return redirect()->route('users.index')->with(['success'=>'تم الإضافة بنجاح']);
 
     }
